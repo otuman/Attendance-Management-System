@@ -1,0 +1,3780 @@
+
+AttendSysManagement.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001798  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000064  00800060  00001798  0000182c  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000128  008000c4  008000c4  00001890  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001890  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000018c0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000198  00000000  00000000  000018fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00004001  00000000  00000000  00001a94  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000071b  00000000  00000000  00005a95  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b43  00000000  00000000  000061b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000004b4  00000000  00000000  00006cf4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000721  00000000  00000000  000071a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000175f  00000000  00000000  000078c9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000250  00000000  00000000  00009028  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 aa 01 	jmp	0x354	; 0x354 <__ctors_end>
+       4:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+       8:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+       c:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      10:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      14:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      18:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      1c:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      20:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      24:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      28:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      2c:	0c 94 f7 0a 	jmp	0x15ee	; 0x15ee <__vector_11>
+      30:	0c 94 23 0b 	jmp	0x1646	; 0x1646 <__vector_12>
+      34:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      38:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      3c:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      40:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      44:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      48:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      4c:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+      50:	0c 94 c7 01 	jmp	0x38e	; 0x38e <__bad_interrupt>
+
+00000054 <__trampolines_end>:
+      54:	9c 00       	.word	0x009c	; ????
+      56:	7b 00       	.word	0x007b	; ????
+      58:	5a 00       	.word	0x005a	; ????
+
+0000005a <statusMsg1>:
+      5a:	59 6f 75 72 20 61 74 74 65 6e 64 61 6e 63 65 20     Your attendance 
+      6a:	72 65 63 6f 72 64 20 69 73 20 73 74 6f 72 65 64     record is stored
+	...
+
+0000007b <statusMsg>:
+      7b:	59 6f 75 20 61 72 65 20 73 75 63 63 65 73 73 66     You are successf
+      8b:	75 6c 6c 79 20 72 65 67 69 73 74 65 72 65 64 20     ully registered 
+	...
+
+0000009c <initMsg>:
+      9c:	57 65 6c 63 6f 6d 65 20 74 6f 20 41 74 74 65 6e     Welcome to Atten
+      ac:	64 61 6e 63 65 20 53 79 73 74 65 6d 00              dance System.
+
+000000b9 <string_response_table>:
+      b9:	3a 03 28 03 03 03 f2 02 d5 02 a7 02 77 02 4f 02     :.(.........w.O.
+      c9:	3e 02 08 02 f2 01 32 02 e8 01 d3 01 ba 01 a1 01     >.....2.........
+      d9:	88 01 76 01 27 02 5f 01 52 01 41 01 25 01 09 01     ..v.'._.R.A.%...
+      e9:	eb 00                                               ..
+
+000000eb <errorMsg7>:
+      eb:	46 61 69 6c 20 74 6f 20 72 65 63 65 69 76 65 20     Fail to receive 
+      fb:	74 68 65 20 66 6f 6c 6c 6f 77 69 6e 67 00           the following.
+
+00000109 <errorMsg6>:
+     109:	20 54 65 6d 70 6c 61 74 65 20 6c 6f 61 64 65 64      Template loaded
+     119:	20 74 6f 20 62 75 66 66 65 72 20 00                  to buffer .
+
+00000125 <rspMsg12>:
+     125:	20 54 65 6d 70 6c 61 74 65 20 6c 6f 61 64 65 64      Template loaded
+     135:	20 74 6f 20 62 75 66 66 65 72 20 00                  to buffer .
+
+00000141 <rspMsg11>:
+     141:	20 76 61 6c 69 64 20 74 65 6d 70 6c 61 74 65 73      valid templates
+	...
+
+00000152 <rspMsg10>:
+     152:	54 68 65 72 65 20 61 72 65 20 3a 20 00              There are : .
+
+0000015f <rspMsg9>:
+     15f:	50 6c 65 61 73 65 20 65 6e 74 65 72 20 74 68 65     Please enter the
+     16f:	20 49 44 20 3a 20 00                                 ID : .
+
+00000176 <rspMsg7>:
+     176:	46 6c 61 73 68 20 77 61 73 20 65 6d 70 74 69 65     Flash was emptie
+     186:	64 00                                               d.
+
+00000188 <rspMsg6>:
+     188:	4e 6f 20 6d 61 74 63 68 69 6e 67 20 66 69 6e 67     No matching fing
+     198:	65 72 20 66 6f 75 6e 64 00                          er found.
+
+000001a1 <rspMsg5>:
+     1a1:	46 6f 75 6e 64 20 74 68 65 20 6d 61 74 63 68 69     Found the matchi
+     1b1:	6e 67 20 66 69 6e 65 72 00                          ng finer.
+
+000001ba <errorMsg5>:
+     1ba:	45 72 72 6f 72 20 77 68 65 6e 20 77 72 69 74 69     Error when writi
+     1ca:	6e 67 20 66 6c 61 73 68 00                          ng flash.
+
+000001d3 <rspMsg4>:
+     1d3:	20 69 73 20 62 65 79 6f 6e 64 20 74 68 65 20 73      is beyond the s
+     1e3:	63 6f 70 65 00                                      cope.
+
+000001e8 <rspMsg3>:
+     1e8:	54 68 65 20 49 44 20 3a 20 00                       The ID : .
+
+000001f2 <errorMsg4>:
+     1f2:	54 65 6d 70 6c 61 74 65 20 64 6f 20 6e 6f 74 20     Template do not 
+     202:	6d 61 74 63 68 00                                   match.
+
+00000208 <rspMsg2>:
+     208:	54 65 6d 70 6c 61 74 65 20 6f 66 20 74 77 6f 20     Template of two 
+     218:	62 75 66 66 65 72 20 6d 61 74 63 68 65 64 00        buffer matched.
+
+00000227 <rspMsg8>:
+     227:	20 77 61 73 20 66 6f 75 6e 64 00                     was found.
+
+00000232 <rspMsg1>:
+     232:	20 77 61 73 20 73 74 6f 72 65 64 00                  was stored.
+
+0000023e <rspMsg>:
+     23e:	46 69 6e 67 65 72 20 77 69 74 68 20 49 44 3a 20     Finger with ID: 
+	...
+
+0000024f <errorMsg3>:
+     24f:	46 61 69 6c 20 64 75 65 20 74 6f 20 6c 61 63 6b     Fail due to lack
+     25f:	20 6f 66 20 76 61 6c 69 64 20 70 72 69 6d 61 72      of valid primar
+     26f:	79 20 49 6d 61 67 65 00                             y Image.
+
+00000277 <errorMsg2>:
+     277:	46 61 69 6c 20 64 75 65 20 74 6f 20 6f 76 65 72     Fail due to over
+     287:	20 73 6d 61 6c 6c 6e 65 73 73 20 6f 66 20 66 69      smallness of fi
+     297:	6e 67 65 72 70 72 69 6e 74 20 49 6d 61 67 65 00     ngerprint Image.
+
+000002a7 <errorMsg1>:
+     2a7:	46 61 69 6c 20 64 75 65 20 74 6f 20 6f 76 65 72     Fail due to over
+     2b7:	20 64 69 73 6f 72 64 65 72 6c 79 20 66 69 6e 67      disorderly fing
+     2c7:	65 72 70 72 69 6e 74 20 49 6d 61 67 65 00           erprint Image.
+
+000002d5 <errorMsg>:
+     2d5:	45 72 72 6f 72 20 77 68 65 6e 20 72 65 63 65 69     Error when recei
+     2e5:	76 69 6e 67 20 70 61 63 6b 61 67 65 00              ving package.
+
+000002f2 <scanned>:
+     2f2:	53 63 61 6e 6e 69 6e 67 20 2e 2e 2e 2e 2e 2e 2e     Scanning .......
+	...
+
+00000303 <tapYourFinger>:
+     303:	50 6c 65 61 73 65 20 74 61 70 20 79 6f 75 72 20     Please tap your 
+     313:	66 69 6e 67 65 72 20 74 6f 20 74 68 65 20 73 65     finger to the se
+     323:	6e 73 6f 72 00                                      nsor.
+
+00000328 <noReturnedVal>:
+     328:	4e 6f 20 72 65 74 75 72 6e 65 64 20 56 61 6c 75     No returned Valu
+     338:	65 00                                               e.
+
+0000033a <portIsReady>:
+     33a:	43 6f 6e 6e 65 63 74 69 6f 6e 20 69 73 20 65 73     Connection is es
+     34a:	74 61 62 6c 69 73 68 65 64 00                       tablished.
+
+00000354 <__ctors_end>:
+     354:	11 24       	eor	r1, r1
+     356:	1f be       	out	0x3f, r1	; 63
+     358:	cf e5       	ldi	r28, 0x5F	; 95
+     35a:	d4 e0       	ldi	r29, 0x04	; 4
+     35c:	de bf       	out	0x3e, r29	; 62
+     35e:	cd bf       	out	0x3d, r28	; 61
+
+00000360 <__do_copy_data>:
+     360:	10 e0       	ldi	r17, 0x00	; 0
+     362:	a0 e6       	ldi	r26, 0x60	; 96
+     364:	b0 e0       	ldi	r27, 0x00	; 0
+     366:	e8 e9       	ldi	r30, 0x98	; 152
+     368:	f7 e1       	ldi	r31, 0x17	; 23
+     36a:	02 c0       	rjmp	.+4      	; 0x370 <__do_copy_data+0x10>
+     36c:	05 90       	lpm	r0, Z+
+     36e:	0d 92       	st	X+, r0
+     370:	a4 3c       	cpi	r26, 0xC4	; 196
+     372:	b1 07       	cpc	r27, r17
+     374:	d9 f7       	brne	.-10     	; 0x36c <__do_copy_data+0xc>
+
+00000376 <__do_clear_bss>:
+     376:	21 e0       	ldi	r18, 0x01	; 1
+     378:	a4 ec       	ldi	r26, 0xC4	; 196
+     37a:	b0 e0       	ldi	r27, 0x00	; 0
+     37c:	01 c0       	rjmp	.+2      	; 0x380 <.do_clear_bss_start>
+
+0000037e <.do_clear_bss_loop>:
+     37e:	1d 92       	st	X+, r1
+
+00000380 <.do_clear_bss_start>:
+     380:	ac 3e       	cpi	r26, 0xEC	; 236
+     382:	b2 07       	cpc	r27, r18
+     384:	e1 f7       	brne	.-8      	; 0x37e <.do_clear_bss_loop>
+     386:	0e 94 c9 01 	call	0x392	; 0x392 <main>
+     38a:	0c 94 ca 0b 	jmp	0x1794	; 0x1794 <_exit>
+
+0000038e <__bad_interrupt>:
+     38e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000392 <main>:
+unsigned char UDR_Value;
+void Clear_Display();
+void LCD_Display(char *strg);
+
+//*******************end of declaralation of variables ***********
+int main(){ 
+     392:	cf 93       	push	r28
+     394:	df 93       	push	r29
+     396:	00 d0       	rcall	.+0      	; 0x398 <main+0x6>
+     398:	00 d0       	rcall	.+0      	; 0x39a <main+0x8>
+     39a:	cd b7       	in	r28, 0x3d	; 61
+     39c:	de b7       	in	r29, 0x3e	; 62
+	
+	PortInit();
+     39e:	0e 94 43 03 	call	0x686	; 0x686 <PortInit>
+	LCDinit();
+     3a2:	0e 94 15 03 	call	0x62a	; 0x62a <LCDinit>
+	Clear_Display();
+     3a6:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+	USART_Init(BAUDRATE);
+     3aa:	83 e3       	ldi	r24, 0x33	; 51
+     3ac:	90 e0       	ldi	r25, 0x00	; 0
+     3ae:	0e 94 48 0b 	call	0x1690	; 0x1690 <USART_Init>
+	sei();
+     3b2:	78 94       	sei
+	Clear_Display();
+     3b4:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_table[0]))); //Retrieving string from the memory
+     3b8:	0f 2e       	mov	r0, r31
+     3ba:	f4 e5       	ldi	r31, 0x54	; 84
+     3bc:	6f 2e       	mov	r6, r31
+     3be:	f0 e0       	ldi	r31, 0x00	; 0
+     3c0:	7f 2e       	mov	r7, r31
+     3c2:	f0 2d       	mov	r31, r0
+     3c4:	f3 01       	movw	r30, r6
+     3c6:	65 91       	lpm	r22, Z+
+     3c8:	74 91       	lpm	r23, Z
+     3ca:	8d ec       	ldi	r24, 0xCD	; 205
+     3cc:	91 e0       	ldi	r25, 0x01	; 1
+     3ce:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+	LCD_Display(buffer);
+     3d2:	8d ec       	ldi	r24, 0xCD	; 205
+     3d4:	91 e0       	ldi	r25, 0x01	; 1
+     3d6:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+	delay_ms(1000);
+     3da:	88 ee       	ldi	r24, 0xE8	; 232
+     3dc:	93 e0       	ldi	r25, 0x03	; 3
+     3de:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			int count =0;
+			unsigned char  data[count];
+					 Clear_Display();
+				    
+					 PORTD = PORTD & 0b00000000;		    // Lower PD3
+					 PORTD = PORTD | 0b00010010;        // Raise PD3
+     3e2:	ce 01       	movw	r24, r28
+     3e4:	01 96       	adiw	r24, 0x01	; 1
+     3e6:	4c 01       	movw	r8, r24
+			         for(count =0; count<11; count++ )
+     3e8:	31 2c       	mov	r3, r1
+     3ea:	21 2c       	mov	r2, r1
+     3ec:	8e 01       	movw	r16, r28
+     3ee:	09 58       	subi	r16, 0x89	; 137
+     3f0:	1f 4f       	sbci	r17, 0xFF	; 255
+			int count =0;
+			unsigned char  data[count];
+					 Clear_Display();
+				    
+					 PORTD = PORTD & 0b00000000;		    // Lower PD3
+					 PORTD = PORTD | 0b00010010;        // Raise PD3
+     3f2:	89 83       	std	Y+1, r24	; 0x01
+     3f4:	9a 82       	std	Y+2, r9	; 0x02
+			         for(count =0; count<11; count++ )
+     3f6:	43 2c       	mov	r4, r3
+     3f8:	52 2c       	mov	r5, r2
+	LCD_Display(buffer);
+	delay_ms(1000);
+	while(1)
+		{
+		
+	  PORTA = PORTA & 0b11111110;		// Lower PB0
+     3fa:	d8 98       	cbi	0x1b, 0	; 27
+	  PORTA = PORTA | 0b00000010;		// Raise PB1
+     3fc:	d9 9a       	sbi	0x1b, 1	; 27
+	  delay_ms(5);
+     3fe:	85 e0       	ldi	r24, 0x05	; 5
+     400:	90 e0       	ldi	r25, 0x00	; 0
+     402:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+	  if (((PINA & 0b00000100)==0)){   //Activate switch 1
+     406:	ca 99       	sbic	0x19, 2	; 25
+     408:	76 c0       	rjmp	.+236    	; 0x4f6 <__stack+0x97>
+			int count =0;
+			unsigned char  data[count];
+					 Clear_Display();
+     40a:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				    
+					 PORTD = PORTD & 0b00000000;		    // Lower PD3
+     40e:	82 b3       	in	r24, 0x12	; 18
+     410:	12 ba       	out	0x12, r1	; 18
+					 PORTD = PORTD | 0b00010010;        // Raise PD3
+     412:	82 b3       	in	r24, 0x12	; 18
+     414:	82 61       	ori	r24, 0x12	; 18
+     416:	82 bb       	out	0x12, r24	; 18
+     418:	9c 82       	std	Y+4, r9	; 0x04
+     41a:	8b 82       	std	Y+3, r8	; 0x03
+     41c:	c9 80       	ldd	r12, Y+1	; 0x01
+     41e:	da 80       	ldd	r13, Y+2	; 0x02
+			         for(count =0; count<11; count++ )
+     420:	e4 2c       	mov	r14, r4
+     422:	f5 2c       	mov	r15, r5
+			         {
+						  //data[count] = USART_Receive();
+						  LCD_Display("The ");
+     424:	8c ea       	ldi	r24, 0xAC	; 172
+     426:	90 e0       	ldi	r25, 0x00	; 0
+     428:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						  LCD_Display(itoa(count, buffer, 10));
+     42c:	4a e0       	ldi	r20, 0x0A	; 10
+     42e:	50 e0       	ldi	r21, 0x00	; 0
+     430:	6d ec       	ldi	r22, 0xCD	; 205
+     432:	71 e0       	ldi	r23, 0x01	; 1
+     434:	c7 01       	movw	r24, r14
+     436:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+     43a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						  LCD_Display("  ");
+     43e:	81 eb       	ldi	r24, 0xB1	; 177
+     440:	90 e0       	ldi	r25, 0x00	; 0
+     442:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						  LCD_Display(itoa(data[count], buffer, 10));
+     446:	f6 01       	movw	r30, r12
+     448:	81 91       	ld	r24, Z+
+     44a:	6f 01       	movw	r12, r30
+     44c:	4a e0       	ldi	r20, 0x0A	; 10
+     44e:	50 e0       	ldi	r21, 0x00	; 0
+     450:	6d ec       	ldi	r22, 0xCD	; 205
+     452:	71 e0       	ldi	r23, 0x01	; 1
+     454:	90 e0       	ldi	r25, 0x00	; 0
+     456:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+     45a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						  delay_ms(10);
+     45e:	8a e0       	ldi	r24, 0x0A	; 10
+     460:	90 e0       	ldi	r25, 0x00	; 0
+     462:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+						  Clear_Display();
+     466:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			unsigned char  data[count];
+					 Clear_Display();
+				    
+					 PORTD = PORTD & 0b00000000;		    // Lower PD3
+					 PORTD = PORTD | 0b00010010;        // Raise PD3
+			         for(count =0; count<11; count++ )
+     46a:	ff ef       	ldi	r31, 0xFF	; 255
+     46c:	ef 1a       	sub	r14, r31
+     46e:	ff 0a       	sbc	r15, r31
+     470:	8b e0       	ldi	r24, 0x0B	; 11
+     472:	e8 16       	cp	r14, r24
+     474:	f1 04       	cpc	r15, r1
+     476:	b1 f6       	brne	.-84     	; 0x424 <main+0x92>
+						  LCD_Display(itoa(data[count], buffer, 10));
+						  delay_ms(10);
+						  Clear_Display();
+						  
+			         }
+					 PSDownChar();
+     478:	0e 94 65 0a 	call	0x14ca	; 0x14ca <PSDownChar>
+					 for(count =0; count<118; count++ )
+					  {
+						 PSDownLoadData(data[count]);
+     47c:	eb 81       	ldd	r30, Y+3	; 0x03
+     47e:	fc 81       	ldd	r31, Y+4	; 0x04
+     480:	81 91       	ld	r24, Z+
+     482:	fc 83       	std	Y+4, r31	; 0x04
+     484:	eb 83       	std	Y+3, r30	; 0x03
+     486:	90 e0       	ldi	r25, 0x00	; 0
+     488:	0e 94 ee 0a 	call	0x15dc	; 0x15dc <PSDownLoadData>
+						  delay_ms(10);
+						  Clear_Display();
+						  
+			         }
+					 PSDownChar();
+					 for(count =0; count<118; count++ )
+     48c:	8b 81       	ldd	r24, Y+3	; 0x03
+     48e:	9c 81       	ldd	r25, Y+4	; 0x04
+     490:	80 17       	cp	r24, r16
+     492:	91 07       	cpc	r25, r17
+     494:	99 f7       	brne	.-26     	; 0x47c <__stack+0x1d>
+					  {
+						 PSDownLoadData(data[count]);
+					 }
+					 
+					 LCD_Display("Stopped sending");
+     496:	84 eb       	ldi	r24, 0xB4	; 180
+     498:	90 e0       	ldi	r25, 0x00	; 0
+     49a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				     Clear_Display();
+     49e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+					 strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_table[0])));
+     4a2:	f3 01       	movw	r30, r6
+     4a4:	65 91       	lpm	r22, Z+
+     4a6:	74 91       	lpm	r23, Z
+     4a8:	8d ec       	ldi	r24, 0xCD	; 205
+     4aa:	91 e0       	ldi	r25, 0x01	; 1
+     4ac:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+					 LCD_Display(buffer);
+     4b0:	8d ec       	ldi	r24, 0xCD	; 205
+     4b2:	91 e0       	ldi	r25, 0x01	; 1
+     4b4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				     delay_ms(1000);
+     4b8:	88 ee       	ldi	r24, 0xE8	; 232
+     4ba:	93 e0       	ldi	r25, 0x03	; 3
+     4bc:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+					 Clear_Display();
+     4c0:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+					for(int i=0;  i < PSTempleteNum(); i++){
+     4c4:	e4 2c       	mov	r14, r4
+     4c6:	f5 2c       	mov	r15, r5
+     4c8:	0c c0       	rjmp	.+24     	; 0x4e2 <__stack+0x83>
+							  PSLoadChar(i);
+     4ca:	c7 01       	movw	r24, r14
+     4cc:	0e 94 d4 09 	call	0x13a8	; 0x13a8 <PSLoadChar>
+							  PSUpCharFile();
+     4d0:	0e 94 47 09 	call	0x128e	; 0x128e <PSUpCharFile>
+							  delay_ms(10);
+     4d4:	8a e0       	ldi	r24, 0x0A	; 10
+     4d6:	90 e0       	ldi	r25, 0x00	; 0
+     4d8:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+				     Clear_Display();
+					 strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_table[0])));
+					 LCD_Display(buffer);
+				     delay_ms(1000);
+					 Clear_Display();
+					for(int i=0;  i < PSTempleteNum(); i++){
+     4dc:	9f ef       	ldi	r25, 0xFF	; 255
+     4de:	e9 1a       	sub	r14, r25
+     4e0:	f9 0a       	sbc	r15, r25
+     4e2:	0e 94 a4 08 	call	0x1148	; 0x1148 <PSTempleteNum>
+     4e6:	e8 16       	cp	r14, r24
+     4e8:	f9 06       	cpc	r15, r25
+     4ea:	7c f3       	brlt	.-34     	; 0x4ca <__stack+0x6b>
+     4ec:	0f b6       	in	r0, 0x3f	; 63
+     4ee:	f8 94       	cli
+     4f0:	de bf       	out	0x3e, r29	; 62
+     4f2:	0f be       	out	0x3f, r0	; 63
+     4f4:	cd bf       	out	0x3d, r28	; 61
+							  delay_ms(10);
+					}
+						 
+		 }
+	 		
+		if (((PINA & 0b00001000)==0)){  //Activate switch 2
+     4f6:	cb 9b       	sbis	0x19, 3	; 25
+			    //PSEmptyFPLib();          //Empty the Finger print library
+				PSTurnOnPortCom(); 
+     4f8:	0e 94 53 03 	call	0x6a6	; 0x6a6 <PSTurnOnPortCom>
+		}
+	
+	  PORTA = PORTA & 0b11111101;		// Lower PB1
+     4fc:	d9 98       	cbi	0x1b, 1	; 27
+	  PORTA = PORTA | 0b00000001;       // Raise PB0 
+     4fe:	d8 9a       	sbi	0x1b, 0	; 27
+	  delay_ms(5);
+     500:	85 e0       	ldi	r24, 0x05	; 5
+     502:	90 e0       	ldi	r25, 0x00	; 0
+     504:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		
+		if((PINA & 0b00000100)==0){      //Activate switch 3
+     508:	ca 99       	sbic	0x19, 2	; 25
+     50a:	1e c0       	rjmp	.+60     	; 0x548 <__stack+0xe9>
+				Clear_Display();
+     50c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				PSTurnOnPortCom();      //Turn  on the PS port, this function is resided in the PSFunctions.c file
+     510:	0e 94 53 03 	call	0x6a6	; 0x6a6 <PSTurnOnPortCom>
+				do{
+				 PSRegisterFingerOne();
+     514:	0e 94 52 04 	call	0x8a4	; 0x8a4 <PSRegisterFingerOne>
+				 PSRegisterFingerTwo();
+     518:	0e 94 83 05 	call	0xb06	; 0xb06 <PSRegisterFingerTwo>
+			    }while(PSMatchTwoBuffer()!=1);
+     51c:	0e 94 57 07 	call	0xeae	; 0xeae <PSMatchTwoBuffer>
+     520:	81 30       	cpi	r24, 0x01	; 1
+     522:	c1 f7       	brne	.-16     	; 0x514 <__stack+0xb5>
+				Clear_Display();
+     524:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_table[1]))); //Retrieving string from the memory
+     528:	e6 e5       	ldi	r30, 0x56	; 86
+     52a:	f0 e0       	ldi	r31, 0x00	; 0
+     52c:	65 91       	lpm	r22, Z+
+     52e:	74 91       	lpm	r23, Z
+     530:	8d ec       	ldi	r24, 0xCD	; 205
+     532:	91 e0       	ldi	r25, 0x01	; 1
+     534:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+				LCD_Display(buffer);
+     538:	8d ec       	ldi	r24, 0xCD	; 205
+     53a:	91 e0       	ldi	r25, 0x01	; 1
+     53c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				delay_ms(1000);
+     540:	88 ee       	ldi	r24, 0xE8	; 232
+     542:	93 e0       	ldi	r25, 0x03	; 3
+     544:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+				
+					
+		}			
+     	if ((PINA & 0b00001000)==0){        //Activate switch 4
+     548:	cb 99       	sbic	0x19, 3	; 25
+     54a:	57 cf       	rjmp	.-338    	; 0x3fa <main+0x68>
+				do{
+					Clear_Display();
+     54c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+					PSRegisterFingerOne();
+     550:	0e 94 52 04 	call	0x8a4	; 0x8a4 <PSRegisterFingerOne>
+					}while((PSSearchForAFingerB1(0, 40)!=1));
+     554:	68 e2       	ldi	r22, 0x28	; 40
+     556:	70 e0       	ldi	r23, 0x00	; 0
+     558:	83 2d       	mov	r24, r3
+     55a:	92 2d       	mov	r25, r2
+     55c:	0e 94 e4 07 	call	0xfc8	; 0xfc8 <PSSearchForAFingerB1>
+     560:	81 30       	cpi	r24, 0x01	; 1
+     562:	a1 f7       	brne	.-24     	; 0x54c <__stack+0xed>
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_table[2]))); //Retrieving string from the memory
+     564:	e8 e5       	ldi	r30, 0x58	; 88
+     566:	f0 e0       	ldi	r31, 0x00	; 0
+     568:	65 91       	lpm	r22, Z+
+     56a:	74 91       	lpm	r23, Z
+     56c:	8d ec       	ldi	r24, 0xCD	; 205
+     56e:	91 e0       	ldi	r25, 0x01	; 1
+     570:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+				LCD_Display(buffer);
+     574:	8d ec       	ldi	r24, 0xCD	; 205
+     576:	91 e0       	ldi	r25, 0x01	; 1
+     578:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				delay_ms(1000);
+     57c:	88 ee       	ldi	r24, 0xE8	; 232
+     57e:	93 e0       	ldi	r25, 0x03	; 3
+     580:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+				Clear_Display();
+     584:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     588:	38 cf       	rjmp	.-400    	; 0x3fa <main+0x68>
+
+0000058a <delay_ms>:
+
+
+
+void delay_ms(int d){ 
+	int i = 0;
+	while(i<d)
+     58a:	18 16       	cp	r1, r24
+     58c:	19 06       	cpc	r1, r25
+     58e:	6c f4       	brge	.+26     	; 0x5aa <delay_ms+0x20>
+     590:	20 e0       	ldi	r18, 0x00	; 0
+     592:	30 e0       	ldi	r19, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     594:	ef e9       	ldi	r30, 0x9F	; 159
+     596:	ff e0       	ldi	r31, 0x0F	; 15
+     598:	31 97       	sbiw	r30, 0x01	; 1
+     59a:	f1 f7       	brne	.-4      	; 0x598 <delay_ms+0xe>
+     59c:	00 c0       	rjmp	.+0      	; 0x59e <delay_ms+0x14>
+     59e:	00 00       	nop
+	{
+		_delay_ms(2);
+		i++;
+     5a0:	2f 5f       	subi	r18, 0xFF	; 255
+     5a2:	3f 4f       	sbci	r19, 0xFF	; 255
+
+
+
+void delay_ms(int d){ 
+	int i = 0;
+	while(i<d)
+     5a4:	28 17       	cp	r18, r24
+     5a6:	39 07       	cpc	r19, r25
+     5a8:	a9 f7       	brne	.-22     	; 0x594 <delay_ms+0xa>
+     5aa:	08 95       	ret
+
+000005ac <Strobe>:
+			}
+}
+//************************** Strobe *********************************
+void Strobe(){ 
+	
+    PORTB = PORTB | 0b00000100; // E = 1
+     5ac:	c2 9a       	sbi	0x18, 2	; 24
+	Short_Delay();
+	PORTB = PORTB & 0b11111011; // E = 0
+     5ae:	c2 98       	cbi	0x18, 2	; 24
+	delay_ms(5);
+     5b0:	85 e0       	ldi	r24, 0x05	; 5
+     5b2:	90 e0       	ldi	r25, 0x00	; 0
+     5b4:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     5b8:	08 95       	ret
+
+000005ba <Unpack_To_PortB>:
+	for (i=0; i<10; i++){}; 
+
+}
+//*******************************************************************     
+//************************ Unpack_To_PortC **************************   
+void Unpack_To_PortB(char data){
+     5ba:	cf 93       	push	r28
+     5bc:	c8 2f       	mov	r28, r24
+	
+		char temp;
+		temp = data;
+		PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+     5be:	88 b3       	in	r24, 0x18	; 24
+     5c0:	8f 70       	andi	r24, 0x0F	; 15
+     5c2:	88 bb       	out	0x18, r24	; 24
+		data = data & 0xF0; // mask away low nibble from data
+		PORTB = PORTB | data; // data low nibble to Port D high nibble
+     5c4:	88 b3       	in	r24, 0x18	; 24
+void Unpack_To_PortB(char data){
+	
+		char temp;
+		temp = data;
+		PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+		data = data & 0xF0; // mask away low nibble from data
+     5c6:	9c 2f       	mov	r25, r28
+     5c8:	90 7f       	andi	r25, 0xF0	; 240
+		PORTB = PORTB | data; // data low nibble to Port D high nibble
+     5ca:	89 2b       	or	r24, r25
+     5cc:	88 bb       	out	0x18, r24	; 24
+		Strobe();
+     5ce:	0e 94 d6 02 	call	0x5ac	; 0x5ac <Strobe>
+		PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+     5d2:	88 b3       	in	r24, 0x18	; 24
+     5d4:	8f 70       	andi	r24, 0x0F	; 15
+     5d6:	88 bb       	out	0x18, r24	; 24
+		temp = temp <<4; // move data low nibble to high nibble
+		PORTB = PORTB | temp; // data low nibble to Port D high nibble
+     5d8:	88 b3       	in	r24, 0x18	; 24
+		PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+		data = data & 0xF0; // mask away low nibble from data
+		PORTB = PORTB | data; // data low nibble to Port D high nibble
+		Strobe();
+		PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+		temp = temp <<4; // move data low nibble to high nibble
+     5da:	c2 95       	swap	r28
+     5dc:	c0 7f       	andi	r28, 0xF0	; 240
+		PORTB = PORTB | temp; // data low nibble to Port D high nibble
+     5de:	c8 2b       	or	r28, r24
+     5e0:	c8 bb       	out	0x18, r28	; 24
+		Strobe();
+     5e2:	0e 94 d6 02 	call	0x5ac	; 0x5ac <Strobe>
+}
+     5e6:	cf 91       	pop	r28
+     5e8:	08 95       	ret
+
+000005ea <LCD_Display>:
+
+//******************************************************************
+
+//*************************** LCD_Display ******************************
+
+void LCD_Display(char *strg){ 
+     5ea:	cf 93       	push	r28
+     5ec:	df 93       	push	r29
+     5ee:	ec 01       	movw	r28, r24
+	
+char character;            // Exits loop when character = NULL
+		PORTB = PORTB | 0b00000100; // E = 1
+     5f0:	c2 9a       	sbi	0x18, 2	; 24
+		PORTB = PORTB & 0b11111101; // RW = 0,
+     5f2:	c1 98       	cbi	0x18, 1	; 24
+		PORTB = PORTB | 0b00000001; // RS = 1 (Data)
+     5f4:	c0 9a       	sbi	0x18, 0	; 24
+		while (character = *strg)
+     5f6:	88 81       	ld	r24, Y
+     5f8:	88 23       	and	r24, r24
+     5fa:	39 f0       	breq	.+14     	; 0x60a <LCD_Display+0x20>
+     5fc:	21 96       	adiw	r28, 0x01	; 1
+			{
+			Unpack_To_PortB(character); // write data to LCD
+     5fe:	90 e0       	ldi	r25, 0x00	; 0
+     600:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+	
+char character;            // Exits loop when character = NULL
+		PORTB = PORTB | 0b00000100; // E = 1
+		PORTB = PORTB & 0b11111101; // RW = 0,
+		PORTB = PORTB | 0b00000001; // RS = 1 (Data)
+		while (character = *strg)
+     604:	89 91       	ld	r24, Y+
+     606:	81 11       	cpse	r24, r1
+     608:	fa cf       	rjmp	.-12     	; 0x5fe <LCD_Display+0x14>
+			{
+			Unpack_To_PortB(character); // write data to LCD
+			*strg++;
+			}
+}
+     60a:	df 91       	pop	r29
+     60c:	cf 91       	pop	r28
+     60e:	08 95       	ret
+
+00000610 <Clear_Display>:
+}
+//*******************************************************************
+//************************ Clear_Display ****************************
+void Clear_Display(){
+
+		PORTB = PORTB | 0b00000100; // E = 1
+     610:	c2 9a       	sbi	0x18, 2	; 24
+		PORTB = PORTB & 0b11111100; // RW = 0, RS = 0 (Cmd)
+     612:	88 b3       	in	r24, 0x18	; 24
+     614:	8c 7f       	andi	r24, 0xFC	; 252
+     616:	88 bb       	out	0x18, r24	; 24
+		Short_Delay(); // Wait for LCD
+		Unpack_To_PortB(0x01); // clear LCD
+     618:	81 e0       	ldi	r24, 0x01	; 1
+     61a:	90 e0       	ldi	r25, 0x00	; 0
+     61c:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+		Unpack_To_PortB(0x02); // cursor home
+     620:	82 e0       	ldi	r24, 0x02	; 2
+     622:	90 e0       	ldi	r25, 0x00	; 0
+     624:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+     628:	08 95       	ret
+
+0000062a <LCDinit>:
+//********************************************************************
+//************************** LCD INITIALIZATION **********************
+
+void LCDinit(void) 
+{
+DDRB  = 0xFF; // Port C is output
+     62a:	8f ef       	ldi	r24, 0xFF	; 255
+     62c:	87 bb       	out	0x17, r24	; 23
+PORTB = 0x00; // E = 0
+     62e:	18 ba       	out	0x18, r1	; 24
+delay_ms(5); // Wait for LCD
+     630:	85 e0       	ldi	r24, 0x05	; 5
+     632:	90 e0       	ldi	r25, 0x00	; 0
+     634:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+PORTB = PORTB & 0x0F; // mask away high nibble from Port D
+     638:	88 b3       	in	r24, 0x18	; 24
+     63a:	8f 70       	andi	r24, 0x0F	; 15
+     63c:	88 bb       	out	0x18, r24	; 24
+PORTB = PORTB | 0x20; // enable 4-bit data transfer
+     63e:	c5 9a       	sbi	0x18, 5	; 24
+Strobe();
+     640:	0e 94 d6 02 	call	0x5ac	; 0x5ac <Strobe>
+Unpack_To_PortB(0x28); // enable 4-bit data transfer
+     644:	88 e2       	ldi	r24, 0x28	; 40
+     646:	90 e0       	ldi	r25, 0x00	; 0
+     648:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+Unpack_To_PortB(0x0C); // display on, no cursor
+     64c:	8c e0       	ldi	r24, 0x0C	; 12
+     64e:	90 e0       	ldi	r25, 0x00	; 0
+     650:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+Unpack_To_PortB(0x06); // cursor shifts right
+     654:	86 e0       	ldi	r24, 0x06	; 6
+     656:	90 e0       	ldi	r25, 0x00	; 0
+     658:	0e 94 dd 02 	call	0x5ba	; 0x5ba <Unpack_To_PortB>
+Clear_Display();
+     65c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     660:	08 95       	ret
+
+00000662 <OpenPortToPC>:
+#include "PortInit.h"
+#include "lcd_headerFile.h";
+
+//****************************  Flash LED  ************************/
+void OpenPortToPC(){
+	PORTD = PORTD & 0b00000000;		    // Lower PD3
+     662:	82 b3       	in	r24, 0x12	; 18
+     664:	12 ba       	out	0x12, r1	; 18
+	PORTD = PORTD | 0b00010010;        // Raise PD3
+     666:	82 b3       	in	r24, 0x12	; 18
+     668:	82 61       	ori	r24, 0x12	; 18
+     66a:	82 bb       	out	0x12, r24	; 18
+	delay_ms(2);
+     66c:	82 e0       	ldi	r24, 0x02	; 2
+     66e:	90 e0       	ldi	r25, 0x00	; 0
+     670:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     674:	08 95       	ret
+
+00000676 <OpenPortToFP>:
+}
+void OpenPortToFP(){
+	PORTD = PORTD & 0b00000000;		    // Lower PD3
+     676:	82 b3       	in	r24, 0x12	; 18
+     678:	12 ba       	out	0x12, r1	; 18
+	PORTD = PORTD | 0b00000010;        // Raise PD3
+     67a:	91 9a       	sbi	0x12, 1	; 18
+	delay_ms(2);
+     67c:	82 e0       	ldi	r24, 0x02	; 2
+     67e:	90 e0       	ldi	r25, 0x00	; 0
+     680:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     684:	08 95       	ret
+
+00000686 <PortInit>:
+
+//****************************  Port_Init  *************************/
+
+void PortInit()
+{
+	DDRD  = DDRD | 0b00011110;	// PD1, PD2, and PD3 are outputs and PD0 is input
+     686:	81 b3       	in	r24, 0x11	; 17
+     688:	8e 61       	ori	r24, 0x1E	; 30
+     68a:	81 bb       	out	0x11, r24	; 17
+	PORTD = PORTD & 0b00000000;	// PD0 are 0
+     68c:	82 b3       	in	r24, 0x12	; 18
+     68e:	12 ba       	out	0x12, r1	; 18
+	DDRA  = DDRA | 0b00000011;	// PortB0 and PB1 are outputs
+     690:	8a b3       	in	r24, 0x1a	; 26
+     692:	83 60       	ori	r24, 0x03	; 3
+     694:	8a bb       	out	0x1a, r24	; 26
+	PORTA = PORTA & 0b00000000;	// PortB0 and PB1 are 0
+     696:	8b b3       	in	r24, 0x1b	; 27
+     698:	1b ba       	out	0x1b, r1	; 27
+	DDRC  = DDRC| 0b11111111;	// LED
+     69a:	84 b3       	in	r24, 0x14	; 20
+     69c:	8f ef       	ldi	r24, 0xFF	; 255
+     69e:	84 bb       	out	0x14, r24	; 20
+	PORTC = PORTC & 0b00000000;	// LED
+     6a0:	85 b3       	in	r24, 0x15	; 21
+     6a2:	15 ba       	out	0x15, r1	; 21
+     6a4:	08 95       	ret
+
+000006a6 <PSTurnOnPortCom>:
+	errorMsg7
+};
+
+//The function to turn on the PF 
+
+void PSTurnOnPortCom(){
+     6a6:	cf 92       	push	r12
+     6a8:	df 92       	push	r13
+     6aa:	ef 92       	push	r14
+     6ac:	ff 92       	push	r15
+     6ae:	0f 93       	push	r16
+     6b0:	1f 93       	push	r17
+     6b2:	cf 93       	push	r28
+    
+	OpenPortToFP();
+     6b4:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+   
+   for(count=0; count<13; count++){
+     6b8:	10 92 c5 00 	sts	0x00C5, r1
+     6bc:	e0 e0       	ldi	r30, 0x00	; 0
+	for (i=0; i<12; i++){
+		
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+	 }*/
+     if(returnedValue[9] == 00){
+     6be:	05 ed       	ldi	r16, 0xD5	; 213
+     6c0:	11 e0       	ldi	r17, 0x01	; 1
+			    delay_ms(100);
+			    Clear_Display();
+			    
+		    }
+		    else{
+			    strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[1]))); //Retrieving string from the memory
+     6c2:	0f 2e       	mov	r0, r31
+     6c4:	fb eb       	ldi	r31, 0xBB	; 187
+     6c6:	cf 2e       	mov	r12, r31
+     6c8:	f0 e0       	ldi	r31, 0x00	; 0
+     6ca:	df 2e       	mov	r13, r31
+     6cc:	f0 2d       	mov	r31, r0
+		
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+	 }*/
+     if(returnedValue[9] == 00){
+			    strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[0]))); //Retrieving string from the memory
+     6ce:	0f 2e       	mov	r0, r31
+     6d0:	f9 eb       	ldi	r31, 0xB9	; 185
+     6d2:	ef 2e       	mov	r14, r31
+     6d4:	f0 e0       	ldi	r31, 0x00	; 0
+     6d6:	ff 2e       	mov	r15, r31
+     6d8:	f0 2d       	mov	r31, r0
+    
+	OpenPortToFP();
+   
+   for(count=0; count<13; count++){
+	   
+	   USART_Transmit(PSTurnOnPortCommands[count]);
+     6da:	f0 e0       	ldi	r31, 0x00	; 0
+     6dc:	ed 56       	subi	r30, 0x6D	; 109
+     6de:	ff 4f       	sbci	r31, 0xFF	; 255
+     6e0:	80 81       	ld	r24, Z
+     6e2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	 if(count==12){
+     6e6:	80 91 c5 00 	lds	r24, 0x00C5
+     6ea:	8c 30       	cpi	r24, 0x0C	; 12
+     6ec:	09 f0       	breq	.+2      	; 0x6f0 <PSTurnOnPortCom+0x4a>
+     6ee:	39 c0       	rjmp	.+114    	; 0x762 <PSTurnOnPortCom+0xbc>
+		    
+		  for(count=0; count<12; count++){
+     6f0:	10 92 c5 00 	sts	0x00C5, r1
+     6f4:	c0 e0       	ldi	r28, 0x00	; 0
+			    
+			 returnedValue[count] = USART_Receive();
+     6f6:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     6fa:	ec 2f       	mov	r30, r28
+     6fc:	f0 e0       	ldi	r31, 0x00	; 0
+     6fe:	e4 53       	subi	r30, 0x34	; 52
+     700:	fe 4f       	sbci	r31, 0xFE	; 254
+     702:	80 83       	st	Z, r24
+   for(count=0; count<13; count++){
+	   
+	   USART_Transmit(PSTurnOnPortCommands[count]);
+	 if(count==12){
+		    
+		  for(count=0; count<12; count++){
+     704:	e0 91 c5 00 	lds	r30, 0x00C5
+     708:	c1 e0       	ldi	r28, 0x01	; 1
+     70a:	ce 0f       	add	r28, r30
+     70c:	c0 93 c5 00 	sts	0x00C5, r28
+     710:	cc 30       	cpi	r28, 0x0C	; 12
+     712:	88 f3       	brcs	.-30     	; 0x6f6 <PSTurnOnPortCom+0x50>
+	for (i=0; i<12; i++){
+		
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+	 }*/
+     if(returnedValue[9] == 00){
+     714:	f8 01       	movw	r30, r16
+     716:	80 81       	ld	r24, Z
+     718:	81 11       	cpse	r24, r1
+     71a:	12 c0       	rjmp	.+36     	; 0x740 <PSTurnOnPortCom+0x9a>
+			    strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[0]))); //Retrieving string from the memory
+     71c:	f7 01       	movw	r30, r14
+     71e:	65 91       	lpm	r22, Z+
+     720:	74 91       	lpm	r23, Z
+     722:	8d ec       	ldi	r24, 0xCD	; 205
+     724:	91 e0       	ldi	r25, 0x01	; 1
+     726:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			    LCD_Display(buffer);
+     72a:	8d ec       	ldi	r24, 0xCD	; 205
+     72c:	91 e0       	ldi	r25, 0x01	; 1
+     72e:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			    delay_ms(100);
+     732:	84 e6       	ldi	r24, 0x64	; 100
+     734:	90 e0       	ldi	r25, 0x00	; 0
+     736:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			    Clear_Display();
+     73a:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     73e:	11 c0       	rjmp	.+34     	; 0x762 <PSTurnOnPortCom+0xbc>
+			    
+		    }
+		    else{
+			    strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[1]))); //Retrieving string from the memory
+     740:	f6 01       	movw	r30, r12
+     742:	65 91       	lpm	r22, Z+
+     744:	74 91       	lpm	r23, Z
+     746:	8d ec       	ldi	r24, 0xCD	; 205
+     748:	91 e0       	ldi	r25, 0x01	; 1
+     74a:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			    LCD_Display(buffer);
+     74e:	8d ec       	ldi	r24, 0xCD	; 205
+     750:	91 e0       	ldi	r25, 0x01	; 1
+     752:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			    delay_ms(100);
+     756:	84 e6       	ldi	r24, 0x64	; 100
+     758:	90 e0       	ldi	r25, 0x00	; 0
+     75a:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			    Clear_Display();
+     75e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+
+void PSTurnOnPortCom(){
+    
+	OpenPortToFP();
+   
+   for(count=0; count<13; count++){
+     762:	e0 91 c5 00 	lds	r30, 0x00C5
+     766:	ef 5f       	subi	r30, 0xFF	; 255
+     768:	e0 93 c5 00 	sts	0x00C5, r30
+     76c:	ed 30       	cpi	r30, 0x0D	; 13
+     76e:	08 f4       	brcc	.+2      	; 0x772 <PSTurnOnPortCom+0xcc>
+     770:	b4 cf       	rjmp	.-152    	; 0x6da <PSTurnOnPortCom+0x34>
+		    }
+
+	   }
+   }
+ 		
+}
+     772:	cf 91       	pop	r28
+     774:	1f 91       	pop	r17
+     776:	0f 91       	pop	r16
+     778:	ff 90       	pop	r15
+     77a:	ef 90       	pop	r14
+     77c:	df 90       	pop	r13
+     77e:	cf 90       	pop	r12
+     780:	08 95       	ret
+
+00000782 <PSGeneCharFileForBuffer1>:
+   
+	
+}
+
+
+void PSGeneCharFileForBuffer1(){
+     782:	0f 93       	push	r16
+     784:	1f 93       	push	r17
+     786:	cf 93       	push	r28
+     788:	df 93       	push	r29
+ 
+        OpenPortToFP();
+     78a:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+        int count;
+		for(count=0; count<13; count++){
+     78e:	c0 e0       	ldi	r28, 0x00	; 0
+     790:	d0 e0       	ldi	r29, 0x00	; 0
+				
+			USART_Transmit(PSGeneCharFileCommands_1[count]);
+     792:	fe 01       	movw	r30, r28
+     794:	ea 57       	subi	r30, 0x7A	; 122
+     796:	ff 4f       	sbci	r31, 0xFF	; 255
+     798:	80 81       	ld	r24, Z
+     79a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+			
+			if(count==12){
+     79e:	cc 30       	cpi	r28, 0x0C	; 12
+     7a0:	d1 05       	cpc	r29, r1
+     7a2:	59 f4       	brne	.+22     	; 0x7ba <PSGeneCharFileForBuffer1+0x38>
+     7a4:	cc ec       	ldi	r28, 0xCC	; 204
+     7a6:	d1 e0       	ldi	r29, 0x01	; 1
+     7a8:	08 ed       	ldi	r16, 0xD8	; 216
+     7aa:	11 e0       	ldi	r17, 0x01	; 1
+				 for(count=0; count<12; count++){
+				
+				 returnedValue[count]=USART_Receive();
+     7ac:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     7b0:	89 93       	st	Y+, r24
+		for(count=0; count<13; count++){
+				
+			USART_Transmit(PSGeneCharFileCommands_1[count]);
+			
+			if(count==12){
+				 for(count=0; count<12; count++){
+     7b2:	c0 17       	cp	r28, r16
+     7b4:	d1 07       	cpc	r29, r17
+     7b6:	d1 f7       	brne	.-12     	; 0x7ac <PSGeneCharFileForBuffer1+0x2a>
+     7b8:	04 c0       	rjmp	.+8      	; 0x7c2 <PSGeneCharFileForBuffer1+0x40>
+
+void PSGeneCharFileForBuffer1(){
+ 
+        OpenPortToFP();
+        int count;
+		for(count=0; count<13; count++){
+     7ba:	21 96       	adiw	r28, 0x01	; 1
+     7bc:	cd 30       	cpi	r28, 0x0D	; 13
+     7be:	d1 05       	cpc	r29, r1
+     7c0:	44 f3       	brlt	.-48     	; 0x792 <PSGeneCharFileForBuffer1+0x10>
+				 returnedValue[count]=USART_Receive();
+			   }
+			}
+		}
+		
+	OpenPortToPC();
+     7c2:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	 
+	OpenPortToFP();
+     7c6:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	if(returnedValue[9]==0x00)
+     7ca:	80 91 d5 01 	lds	r24, 0x01D5
+     7ce:	81 11       	cpse	r24, r1
+     7d0:	05 c0       	rjmp	.+10     	; 0x7dc <PSGeneCharFileForBuffer1+0x5a>
+		{
+			fingerTapped = TRUE;
+     7d2:	81 e0       	ldi	r24, 0x01	; 1
+     7d4:	80 93 c6 00 	sts	0x00C6, r24
+			PORTC|=(1<<1);
+     7d8:	a9 9a       	sbi	0x15, 1	; 21
+     7da:	5d c0       	rjmp	.+186    	; 0x896 <PSGeneCharFileForBuffer1+0x114>
+		}
+		else if(returnedValue[9]==0x01){
+     7dc:	81 30       	cpi	r24, 0x01	; 1
+     7de:	a9 f4       	brne	.+42     	; 0x80a <PSGeneCharFileForBuffer1+0x88>
+			fingerTapped = FALSE;
+     7e0:	10 92 c6 00 	sts	0x00C6, r1
+			Clear_Display();
+     7e4:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     7e8:	e1 ec       	ldi	r30, 0xC1	; 193
+     7ea:	f0 e0       	ldi	r31, 0x00	; 0
+     7ec:	65 91       	lpm	r22, Z+
+     7ee:	74 91       	lpm	r23, Z
+     7f0:	8d ec       	ldi	r24, 0xCD	; 205
+     7f2:	91 e0       	ldi	r25, 0x01	; 1
+     7f4:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     7f8:	8d ec       	ldi	r24, 0xCD	; 205
+     7fa:	91 e0       	ldi	r25, 0x01	; 1
+     7fc:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			delay_ms(1000);
+     800:	88 ee       	ldi	r24, 0xE8	; 232
+     802:	93 e0       	ldi	r25, 0x03	; 3
+     804:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     808:	46 c0       	rjmp	.+140    	; 0x896 <PSGeneCharFileForBuffer1+0x114>
+			
+		}
+		else if(returnedValue[9]==0x06){
+     80a:	86 30       	cpi	r24, 0x06	; 6
+     80c:	a9 f4       	brne	.+42     	; 0x838 <PSGeneCharFileForBuffer1+0xb6>
+			fingerTapped = FALSE;
+     80e:	10 92 c6 00 	sts	0x00C6, r1
+			Clear_Display();
+     812:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[5]))); 
+     816:	e3 ec       	ldi	r30, 0xC3	; 195
+     818:	f0 e0       	ldi	r31, 0x00	; 0
+     81a:	65 91       	lpm	r22, Z+
+     81c:	74 91       	lpm	r23, Z
+     81e:	8d ec       	ldi	r24, 0xCD	; 205
+     820:	91 e0       	ldi	r25, 0x01	; 1
+     822:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     826:	8d ec       	ldi	r24, 0xCD	; 205
+     828:	91 e0       	ldi	r25, 0x01	; 1
+     82a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			delay_ms(1000);
+     82e:	88 ee       	ldi	r24, 0xE8	; 232
+     830:	93 e0       	ldi	r25, 0x03	; 3
+     832:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     836:	2f c0       	rjmp	.+94     	; 0x896 <PSGeneCharFileForBuffer1+0x114>
+			
+				
+		}
+		else if(returnedValue[9]==0x07){
+     838:	87 30       	cpi	r24, 0x07	; 7
+     83a:	a9 f4       	brne	.+42     	; 0x866 <PSGeneCharFileForBuffer1+0xe4>
+			fingerTapped = FALSE;
+     83c:	10 92 c6 00 	sts	0x00C6, r1
+			Clear_Display();
+     840:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[6]))); 
+     844:	e5 ec       	ldi	r30, 0xC5	; 197
+     846:	f0 e0       	ldi	r31, 0x00	; 0
+     848:	65 91       	lpm	r22, Z+
+     84a:	74 91       	lpm	r23, Z
+     84c:	8d ec       	ldi	r24, 0xCD	; 205
+     84e:	91 e0       	ldi	r25, 0x01	; 1
+     850:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     854:	8d ec       	ldi	r24, 0xCD	; 205
+     856:	91 e0       	ldi	r25, 0x01	; 1
+     858:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			delay_ms(1000);
+     85c:	88 ee       	ldi	r24, 0xE8	; 232
+     85e:	93 e0       	ldi	r25, 0x03	; 3
+     860:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     864:	18 c0       	rjmp	.+48     	; 0x896 <PSGeneCharFileForBuffer1+0x114>
+			
+				
+		}
+		else if(returnedValue[9]==0x15){
+     866:	85 31       	cpi	r24, 0x15	; 21
+     868:	b1 f4       	brne	.+44     	; 0x896 <PSGeneCharFileForBuffer1+0x114>
+			fingerTapped = FALSE;
+     86a:	10 92 c6 00 	sts	0x00C6, r1
+			Clear_Display();
+     86e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[7]))); 
+     872:	e7 ec       	ldi	r30, 0xC7	; 199
+     874:	f0 e0       	ldi	r31, 0x00	; 0
+     876:	65 91       	lpm	r22, Z+
+     878:	74 91       	lpm	r23, Z
+     87a:	8d ec       	ldi	r24, 0xCD	; 205
+     87c:	91 e0       	ldi	r25, 0x01	; 1
+     87e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     882:	8d ec       	ldi	r24, 0xCD	; 205
+     884:	91 e0       	ldi	r25, 0x01	; 1
+     886:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			delay_ms(1000);
+     88a:	88 ee       	ldi	r24, 0xE8	; 232
+     88c:	93 e0       	ldi	r25, 0x03	; 3
+     88e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			Clear_Display();
+     892:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				
+		}
+	OpenPortToFP();
+     896:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+}
+     89a:	df 91       	pop	r29
+     89c:	cf 91       	pop	r28
+     89e:	1f 91       	pop	r17
+     8a0:	0f 91       	pop	r16
+     8a2:	08 95       	ret
+
+000008a4 <PSRegisterFingerOne>:
+
+	   }
+   }
+ 		
+}
+ void PSRegisterFingerOne(){
+     8a4:	cf 92       	push	r12
+     8a6:	df 92       	push	r13
+     8a8:	ef 92       	push	r14
+     8aa:	ff 92       	push	r15
+     8ac:	0f 93       	push	r16
+     8ae:	1f 93       	push	r17
+     8b0:	cf 93       	push	r28
+     8b2:	df 93       	push	r29
+
+	OpenPortToFP();
+     8b4:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+    Clear_Display();
+     8b8:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+     8bc:	ed eb       	ldi	r30, 0xBD	; 189
+     8be:	f0 e0       	ldi	r31, 0x00	; 0
+     8c0:	65 91       	lpm	r22, Z+
+     8c2:	74 91       	lpm	r23, Z
+     8c4:	8d ec       	ldi	r24, 0xCD	; 205
+     8c6:	91 e0       	ldi	r25, 0x01	; 1
+     8c8:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+	LCD_Display(buffer);
+     8cc:	8d ec       	ldi	r24, 0xCD	; 205
+     8ce:	91 e0       	ldi	r25, 0x01	; 1
+     8d0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	OpenPortToFP();
+	       if(returnedValue[9]==0x00){
+     8d4:	05 ed       	ldi	r16, 0xD5	; 213
+     8d6:	11 e0       	ldi	r17, 0x01	; 1
+				//Can't detect finger
+			}
+			else if(returnedValue[9]==0x01){
+				fingerTapped = FALSE;
+				Clear_Display();
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     8d8:	0f 2e       	mov	r0, r31
+     8da:	f1 ec       	ldi	r31, 0xC1	; 193
+     8dc:	cf 2e       	mov	r12, r31
+     8de:	f0 e0       	ldi	r31, 0x00	; 0
+     8e0:	df 2e       	mov	r13, r31
+     8e2:	f0 2d       	mov	r31, r0
+	OpenPortToFP();
+	       if(returnedValue[9]==0x00){
+				
+				PORTC|=(1<<0);
+				Clear_Display();
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[3]))); //Scanned
+     8e4:	0f 2e       	mov	r0, r31
+     8e6:	ff eb       	ldi	r31, 0xBF	; 191
+     8e8:	ef 2e       	mov	r14, r31
+     8ea:	f0 e0       	ldi	r31, 0x00	; 0
+     8ec:	ff 2e       	mov	r15, r31
+     8ee:	f0 2d       	mov	r31, r0
+
+	OpenPortToFP();
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+     8f0:	65 c0       	rjmp	.+202    	; 0x9bc <PSRegisterFingerOne+0x118>
+
+		for(count=0; count<12; count++){
+     8f2:	10 92 c5 00 	sts	0x00C5, r1
+     8f6:	ed 2f       	mov	r30, r29
+			USART_Transmit(PSRegFigureCommands[count]);
+     8f8:	f0 e0       	ldi	r31, 0x00	; 0
+     8fa:	e0 56       	subi	r30, 0x60	; 96
+     8fc:	ff 4f       	sbci	r31, 0xFF	; 255
+     8fe:	80 81       	ld	r24, Z
+     900:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+			if(count==11){
+     904:	80 91 c5 00 	lds	r24, 0x00C5
+     908:	8b 30       	cpi	r24, 0x0B	; 11
+     90a:	91 f4       	brne	.+36     	; 0x930 <PSRegisterFingerOne+0x8c>
+				for(count=0; count<12; count++){
+     90c:	10 92 c5 00 	sts	0x00C5, r1
+     910:	cd 2f       	mov	r28, r29
+				  returnedValue[count] = USART_Receive();
+     912:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     916:	ec 2f       	mov	r30, r28
+     918:	f0 e0       	ldi	r31, 0x00	; 0
+     91a:	e4 53       	subi	r30, 0x34	; 52
+     91c:	fe 4f       	sbci	r31, 0xFE	; 254
+     91e:	80 83       	st	Z, r24
+	while(fingerTapped == FALSE){
+
+		for(count=0; count<12; count++){
+			USART_Transmit(PSRegFigureCommands[count]);
+			if(count==11){
+				for(count=0; count<12; count++){
+     920:	e0 91 c5 00 	lds	r30, 0x00C5
+     924:	c1 e0       	ldi	r28, 0x01	; 1
+     926:	ce 0f       	add	r28, r30
+     928:	c0 93 c5 00 	sts	0x00C5, r28
+     92c:	cc 30       	cpi	r28, 0x0C	; 12
+     92e:	88 f3       	brcs	.-30     	; 0x912 <PSRegisterFingerOne+0x6e>
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+
+		for(count=0; count<12; count++){
+     930:	e0 91 c5 00 	lds	r30, 0x00C5
+     934:	ef 5f       	subi	r30, 0xFF	; 255
+     936:	e0 93 c5 00 	sts	0x00C5, r30
+     93a:	ec 30       	cpi	r30, 0x0C	; 12
+     93c:	e8 f2       	brcs	.-70     	; 0x8f8 <PSRegisterFingerOne+0x54>
+				  returnedValue[count] = USART_Receive();
+				}
+			}
+		}
+
+	OpenPortToPC();
+     93e:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	OpenPortToFP();
+     942:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	       if(returnedValue[9]==0x00){
+     946:	f8 01       	movw	r30, r16
+     948:	80 81       	ld	r24, Z
+     94a:	81 11       	cpse	r24, r1
+     94c:	17 c0       	rjmp	.+46     	; 0x97c <PSRegisterFingerOne+0xd8>
+				
+				PORTC|=(1<<0);
+     94e:	a8 9a       	sbi	0x15, 0	; 21
+				Clear_Display();
+     950:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[3]))); //Scanned
+     954:	f7 01       	movw	r30, r14
+     956:	65 91       	lpm	r22, Z+
+     958:	74 91       	lpm	r23, Z
+     95a:	8d ec       	ldi	r24, 0xCD	; 205
+     95c:	91 e0       	ldi	r25, 0x01	; 1
+     95e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+				LCD_Display(buffer);
+     962:	8d ec       	ldi	r24, 0xCD	; 205
+     964:	91 e0       	ldi	r25, 0x01	; 1
+     966:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				delay_ms(1000);
+     96a:	88 ee       	ldi	r24, 0xE8	; 232
+     96c:	93 e0       	ldi	r25, 0x03	; 3
+     96e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+				Clear_Display();
+     972:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			    PSGeneCharFileForBuffer1();
+     976:	0e 94 c1 03 	call	0x782	; 0x782 <PSGeneCharFileForBuffer1>
+     97a:	1c c0       	rjmp	.+56     	; 0x9b4 <PSRegisterFingerOne+0x110>
+			    	
+			}
+			else if(returnedValue[9]==0x02){
+     97c:	82 30       	cpi	r24, 0x02	; 2
+     97e:	19 f4       	brne	.+6      	; 0x986 <PSRegisterFingerOne+0xe2>
+				fingerTapped=FALSE;
+     980:	10 92 c6 00 	sts	0x00C6, r1
+     984:	1b c0       	rjmp	.+54     	; 0x9bc <PSRegisterFingerOne+0x118>
+				//Can't detect finger
+			}
+			else if(returnedValue[9]==0x01){
+     986:	81 30       	cpi	r24, 0x01	; 1
+     988:	a9 f4       	brne	.+42     	; 0x9b4 <PSRegisterFingerOne+0x110>
+				fingerTapped = FALSE;
+     98a:	10 92 c6 00 	sts	0x00C6, r1
+				Clear_Display();
+     98e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+				strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     992:	f6 01       	movw	r30, r12
+     994:	65 91       	lpm	r22, Z+
+     996:	74 91       	lpm	r23, Z
+     998:	8d ec       	ldi	r24, 0xCD	; 205
+     99a:	91 e0       	ldi	r25, 0x01	; 1
+     99c:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+				LCD_Display(buffer);
+     9a0:	8d ec       	ldi	r24, 0xCD	; 205
+     9a2:	91 e0       	ldi	r25, 0x01	; 1
+     9a4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+				delay_ms(100);
+     9a8:	84 e6       	ldi	r24, 0x64	; 100
+     9aa:	90 e0       	ldi	r25, 0x00	; 0
+     9ac:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+				Clear_Display();
+     9b0:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			}
+	  
+	  if(fingerTapped==TRUE) break;
+     9b4:	80 91 c6 00 	lds	r24, 0x00C6
+     9b8:	81 30       	cpi	r24, 0x01	; 1
+     9ba:	29 f0       	breq	.+10     	; 0x9c6 <PSRegisterFingerOne+0x122>
+
+	OpenPortToFP();
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+     9bc:	d0 91 c6 00 	lds	r29, 0x00C6
+     9c0:	dd 23       	and	r29, r29
+     9c2:	09 f4       	brne	.+2      	; 0x9c6 <PSRegisterFingerOne+0x122>
+     9c4:	96 cf       	rjmp	.-212    	; 0x8f2 <PSRegisterFingerOne+0x4e>
+				Clear_Display();
+			}
+	  
+	  if(fingerTapped==TRUE) break;
+	 }
+	fingerTapped=FALSE;
+     9c6:	10 92 c6 00 	sts	0x00C6, r1
+	
+}
+     9ca:	df 91       	pop	r29
+     9cc:	cf 91       	pop	r28
+     9ce:	1f 91       	pop	r17
+     9d0:	0f 91       	pop	r16
+     9d2:	ff 90       	pop	r15
+     9d4:	ef 90       	pop	r14
+     9d6:	df 90       	pop	r13
+     9d8:	cf 90       	pop	r12
+     9da:	08 95       	ret
+
+000009dc <PSGeneCharFileForBuffer2>:
+				
+		}
+	OpenPortToFP();
+}
+
+void PSGeneCharFileForBuffer2(){
+     9dc:	cf 93       	push	r28
+	 
+	OpenPortToFP();
+     9de:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	 for(count=0; count<13; count++){
+     9e2:	10 92 c5 00 	sts	0x00C5, r1
+     9e6:	e0 e0       	ldi	r30, 0x00	; 0
+		
+		USART_Transmit(PSGeneCharFileCommands_2[count]);
+     9e8:	f0 e0       	ldi	r31, 0x00	; 0
+     9ea:	e7 58       	subi	r30, 0x87	; 135
+     9ec:	ff 4f       	sbci	r31, 0xFF	; 255
+     9ee:	80 81       	ld	r24, Z
+     9f0:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		
+		if(count==12){
+     9f4:	80 91 c5 00 	lds	r24, 0x00C5
+     9f8:	8c 30       	cpi	r24, 0x0C	; 12
+     9fa:	91 f4       	brne	.+36     	; 0xa20 <PSGeneCharFileForBuffer2+0x44>
+			for(count=0; count<12; count++){
+     9fc:	10 92 c5 00 	sts	0x00C5, r1
+     a00:	c0 e0       	ldi	r28, 0x00	; 0
+				
+				returnedValue[count]=USART_Receive();
+     a02:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     a06:	ec 2f       	mov	r30, r28
+     a08:	f0 e0       	ldi	r31, 0x00	; 0
+     a0a:	e4 53       	subi	r30, 0x34	; 52
+     a0c:	fe 4f       	sbci	r31, 0xFE	; 254
+     a0e:	80 83       	st	Z, r24
+	 for(count=0; count<13; count++){
+		
+		USART_Transmit(PSGeneCharFileCommands_2[count]);
+		
+		if(count==12){
+			for(count=0; count<12; count++){
+     a10:	e0 91 c5 00 	lds	r30, 0x00C5
+     a14:	c1 e0       	ldi	r28, 0x01	; 1
+     a16:	ce 0f       	add	r28, r30
+     a18:	c0 93 c5 00 	sts	0x00C5, r28
+     a1c:	cc 30       	cpi	r28, 0x0C	; 12
+     a1e:	88 f3       	brcs	.-30     	; 0xa02 <PSGeneCharFileForBuffer2+0x26>
+}
+
+void PSGeneCharFileForBuffer2(){
+	 
+	OpenPortToFP();
+	 for(count=0; count<13; count++){
+     a20:	e0 91 c5 00 	lds	r30, 0x00C5
+     a24:	ef 5f       	subi	r30, 0xFF	; 255
+     a26:	e0 93 c5 00 	sts	0x00C5, r30
+     a2a:	ed 30       	cpi	r30, 0x0D	; 13
+     a2c:	e8 f2       	brcs	.-70     	; 0x9e8 <PSGeneCharFileForBuffer2+0xc>
+				returnedValue[count]=USART_Receive();
+			}
+		}
+	}
+	
+	OpenPortToPC();
+     a2e:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	 
+	 OpenPortToFP();
+     a32:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+	if(returnedValue[9]==0x00)
+     a36:	80 91 d5 01 	lds	r24, 0x01D5
+     a3a:	81 11       	cpse	r24, r1
+     a3c:	05 c0       	rjmp	.+10     	; 0xa48 <PSGeneCharFileForBuffer2+0x6c>
+	{
+		fingerTapped = TRUE;
+     a3e:	81 e0       	ldi	r24, 0x01	; 1
+     a40:	80 93 c6 00 	sts	0x00C6, r24
+		PORTC|=(1<<1);
+     a44:	a9 9a       	sbi	0x15, 1	; 21
+     a46:	5b c0       	rjmp	.+182    	; 0xafe <PSGeneCharFileForBuffer2+0x122>
+	}
+	else if(returnedValue[9]==0x01){
+     a48:	81 30       	cpi	r24, 0x01	; 1
+     a4a:	a9 f4       	brne	.+42     	; 0xa76 <PSGeneCharFileForBuffer2+0x9a>
+		fingerTapped = FALSE;
+     a4c:	10 92 c6 00 	sts	0x00C6, r1
+		Clear_Display();
+     a50:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     a54:	e1 ec       	ldi	r30, 0xC1	; 193
+     a56:	f0 e0       	ldi	r31, 0x00	; 0
+     a58:	65 91       	lpm	r22, Z+
+     a5a:	74 91       	lpm	r23, Z
+     a5c:	8d ec       	ldi	r24, 0xCD	; 205
+     a5e:	91 e0       	ldi	r25, 0x01	; 1
+     a60:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     a64:	8d ec       	ldi	r24, 0xCD	; 205
+     a66:	91 e0       	ldi	r25, 0x01	; 1
+     a68:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     a6c:	88 ee       	ldi	r24, 0xE8	; 232
+     a6e:	93 e0       	ldi	r25, 0x03	; 3
+     a70:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     a74:	44 c0       	rjmp	.+136    	; 0xafe <PSGeneCharFileForBuffer2+0x122>
+		
+		
+	}
+	else if(returnedValue[9]==0x06){
+     a76:	86 30       	cpi	r24, 0x06	; 6
+     a78:	a9 f4       	brne	.+42     	; 0xaa4 <PSGeneCharFileForBuffer2+0xc8>
+		fingerTapped = FALSE;
+     a7a:	10 92 c6 00 	sts	0x00C6, r1
+		Clear_Display();
+     a7e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[5]))); 
+     a82:	e3 ec       	ldi	r30, 0xC3	; 195
+     a84:	f0 e0       	ldi	r31, 0x00	; 0
+     a86:	65 91       	lpm	r22, Z+
+     a88:	74 91       	lpm	r23, Z
+     a8a:	8d ec       	ldi	r24, 0xCD	; 205
+     a8c:	91 e0       	ldi	r25, 0x01	; 1
+     a8e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     a92:	8d ec       	ldi	r24, 0xCD	; 205
+     a94:	91 e0       	ldi	r25, 0x01	; 1
+     a96:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     a9a:	88 ee       	ldi	r24, 0xE8	; 232
+     a9c:	93 e0       	ldi	r25, 0x03	; 3
+     a9e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     aa2:	2d c0       	rjmp	.+90     	; 0xafe <PSGeneCharFileForBuffer2+0x122>
+		
+		
+	}
+	else if(returnedValue[9]==0x07){
+     aa4:	87 30       	cpi	r24, 0x07	; 7
+     aa6:	a9 f4       	brne	.+42     	; 0xad2 <PSGeneCharFileForBuffer2+0xf6>
+		fingerTapped = FALSE;
+     aa8:	10 92 c6 00 	sts	0x00C6, r1
+		Clear_Display();
+     aac:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[6]))); 
+     ab0:	e5 ec       	ldi	r30, 0xC5	; 197
+     ab2:	f0 e0       	ldi	r31, 0x00	; 0
+     ab4:	65 91       	lpm	r22, Z+
+     ab6:	74 91       	lpm	r23, Z
+     ab8:	8d ec       	ldi	r24, 0xCD	; 205
+     aba:	91 e0       	ldi	r25, 0x01	; 1
+     abc:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     ac0:	8d ec       	ldi	r24, 0xCD	; 205
+     ac2:	91 e0       	ldi	r25, 0x01	; 1
+     ac4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     ac8:	88 ee       	ldi	r24, 0xE8	; 232
+     aca:	93 e0       	ldi	r25, 0x03	; 3
+     acc:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     ad0:	16 c0       	rjmp	.+44     	; 0xafe <PSGeneCharFileForBuffer2+0x122>
+		
+		
+	}
+	else if(returnedValue[9]==0x15){
+     ad2:	85 31       	cpi	r24, 0x15	; 21
+     ad4:	a1 f4       	brne	.+40     	; 0xafe <PSGeneCharFileForBuffer2+0x122>
+		fingerTapped = FALSE;
+     ad6:	10 92 c6 00 	sts	0x00C6, r1
+		Clear_Display();
+     ada:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[7]))); 
+     ade:	e7 ec       	ldi	r30, 0xC7	; 199
+     ae0:	f0 e0       	ldi	r31, 0x00	; 0
+     ae2:	65 91       	lpm	r22, Z+
+     ae4:	74 91       	lpm	r23, Z
+     ae6:	8d ec       	ldi	r24, 0xCD	; 205
+     ae8:	91 e0       	ldi	r25, 0x01	; 1
+     aea:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     aee:	8d ec       	ldi	r24, 0xCD	; 205
+     af0:	91 e0       	ldi	r25, 0x01	; 1
+     af2:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     af6:	88 ee       	ldi	r24, 0xE8	; 232
+     af8:	93 e0       	ldi	r25, 0x03	; 3
+     afa:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		
+		
+	}
+    OpenPortToFP();
+     afe:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+}
+     b02:	cf 91       	pop	r28
+     b04:	08 95       	ret
+
+00000b06 <PSRegisterFingerTwo>:
+	 }
+	fingerTapped=FALSE;
+	
+}
+
+void PSRegisterFingerTwo(){
+     b06:	cf 92       	push	r12
+     b08:	df 92       	push	r13
+     b0a:	ff 92       	push	r15
+     b0c:	0f 93       	push	r16
+     b0e:	1f 93       	push	r17
+     b10:	cf 93       	push	r28
+     b12:	df 93       	push	r29
+	
+	OpenPortToFP();
+     b14:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+    Clear_Display();
+     b18:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+     b1c:	ed eb       	ldi	r30, 0xBD	; 189
+     b1e:	f0 e0       	ldi	r31, 0x00	; 0
+     b20:	65 91       	lpm	r22, Z+
+     b22:	74 91       	lpm	r23, Z
+     b24:	8d ec       	ldi	r24, 0xCD	; 205
+     b26:	91 e0       	ldi	r25, 0x01	; 1
+     b28:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+	LCD_Display(buffer);
+     b2c:	8d ec       	ldi	r24, 0xCD	; 205
+     b2e:	91 e0       	ldi	r25, 0x01	; 1
+     b30:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	OpenPortToFP();
+	  if(returnedValue[9]==00){
+     b34:	05 ed       	ldi	r16, 0xD5	; 213
+     b36:	11 e0       	ldi	r17, 0x01	; 1
+			
+		}
+		else if(returnedValue[9]==0x01){
+			fingerTapped = FALSE;
+			Clear_Display();
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     b38:	0f 2e       	mov	r0, r31
+     b3a:	f1 ec       	ldi	r31, 0xC1	; 193
+     b3c:	cf 2e       	mov	r12, r31
+     b3e:	f0 e0       	ldi	r31, 0x00	; 0
+     b40:	df 2e       	mov	r13, r31
+     b42:	f0 2d       	mov	r31, r0
+		
+	}*/
+	OpenPortToFP();
+	  if(returnedValue[9]==00){
+     		PORTC|=(1<<0);
+			fingerTapped=TRUE;
+     b44:	ff 24       	eor	r15, r15
+     b46:	f3 94       	inc	r15
+	
+	OpenPortToFP();
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+     b48:	58 c0       	rjmp	.+176    	; 0xbfa <PSRegisterFingerTwo+0xf4>
+
+		for(count=0; count<12; count++){
+     b4a:	10 92 c5 00 	sts	0x00C5, r1
+     b4e:	ed 2f       	mov	r30, r29
+			USART_Transmit(PSRegFigureCommands[count]);
+     b50:	f0 e0       	ldi	r31, 0x00	; 0
+     b52:	e0 56       	subi	r30, 0x60	; 96
+     b54:	ff 4f       	sbci	r31, 0xFF	; 255
+     b56:	80 81       	ld	r24, Z
+     b58:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+			if(count==11){
+     b5c:	80 91 c5 00 	lds	r24, 0x00C5
+     b60:	8b 30       	cpi	r24, 0x0B	; 11
+     b62:	91 f4       	brne	.+36     	; 0xb88 <PSRegisterFingerTwo+0x82>
+				for(count=0; count<12; count++){
+     b64:	10 92 c5 00 	sts	0x00C5, r1
+     b68:	cd 2f       	mov	r28, r29
+				   
+				   returnedValue[count] = USART_Receive();
+     b6a:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     b6e:	ec 2f       	mov	r30, r28
+     b70:	f0 e0       	ldi	r31, 0x00	; 0
+     b72:	e4 53       	subi	r30, 0x34	; 52
+     b74:	fe 4f       	sbci	r31, 0xFE	; 254
+     b76:	80 83       	st	Z, r24
+	while(fingerTapped == FALSE){
+
+		for(count=0; count<12; count++){
+			USART_Transmit(PSRegFigureCommands[count]);
+			if(count==11){
+				for(count=0; count<12; count++){
+     b78:	e0 91 c5 00 	lds	r30, 0x00C5
+     b7c:	c1 e0       	ldi	r28, 0x01	; 1
+     b7e:	ce 0f       	add	r28, r30
+     b80:	c0 93 c5 00 	sts	0x00C5, r28
+     b84:	cc 30       	cpi	r28, 0x0C	; 12
+     b86:	88 f3       	brcs	.-30     	; 0xb6a <PSRegisterFingerTwo+0x64>
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+
+		for(count=0; count<12; count++){
+     b88:	e0 91 c5 00 	lds	r30, 0x00C5
+     b8c:	ef 5f       	subi	r30, 0xFF	; 255
+     b8e:	e0 93 c5 00 	sts	0x00C5, r30
+     b92:	ec 30       	cpi	r30, 0x0C	; 12
+     b94:	e8 f2       	brcs	.-70     	; 0xb50 <PSRegisterFingerTwo+0x4a>
+				   
+				   returnedValue[count] = USART_Receive();
+				}
+			}
+		}
+     OpenPortToPC();
+     b96:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	OpenPortToFP();
+     b9a:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	  if(returnedValue[9]==00){
+     b9e:	f8 01       	movw	r30, r16
+     ba0:	80 81       	ld	r24, Z
+     ba2:	81 11       	cpse	r24, r1
+     ba4:	0a c0       	rjmp	.+20     	; 0xbba <PSRegisterFingerTwo+0xb4>
+     		PORTC|=(1<<0);
+     ba6:	a8 9a       	sbi	0x15, 0	; 21
+			fingerTapped=TRUE;
+     ba8:	f0 92 c6 00 	sts	0x00C6, r15
+            delay_ms(5);
+     bac:	85 e0       	ldi	r24, 0x05	; 5
+     bae:	90 e0       	ldi	r25, 0x00	; 0
+     bb0:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			PSGeneCharFileForBuffer2();
+     bb4:	0e 94 ee 04 	call	0x9dc	; 0x9dc <PSGeneCharFileForBuffer2>
+     bb8:	1c c0       	rjmp	.+56     	; 0xbf2 <PSRegisterFingerTwo+0xec>
+	   }
+	    else if(returnedValue[9]==0x02){
+     bba:	82 30       	cpi	r24, 0x02	; 2
+     bbc:	19 f4       	brne	.+6      	; 0xbc4 <PSRegisterFingerTwo+0xbe>
+			fingerTapped=FALSE;
+     bbe:	10 92 c6 00 	sts	0x00C6, r1
+     bc2:	1b c0       	rjmp	.+54     	; 0xbfa <PSRegisterFingerTwo+0xf4>
+			
+		}
+		else if(returnedValue[9]==0x01){
+     bc4:	81 30       	cpi	r24, 0x01	; 1
+     bc6:	a9 f4       	brne	.+42     	; 0xbf2 <PSRegisterFingerTwo+0xec>
+			fingerTapped = FALSE;
+     bc8:	10 92 c6 00 	sts	0x00C6, r1
+			Clear_Display();
+     bcc:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+			strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     bd0:	f6 01       	movw	r30, r12
+     bd2:	65 91       	lpm	r22, Z+
+     bd4:	74 91       	lpm	r23, Z
+     bd6:	8d ec       	ldi	r24, 0xCD	; 205
+     bd8:	91 e0       	ldi	r25, 0x01	; 1
+     bda:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+			LCD_Display(buffer);
+     bde:	8d ec       	ldi	r24, 0xCD	; 205
+     be0:	91 e0       	ldi	r25, 0x01	; 1
+     be2:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+			delay_ms(100);
+     be6:	84 e6       	ldi	r24, 0x64	; 100
+     be8:	90 e0       	ldi	r25, 0x00	; 0
+     bea:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+			Clear_Display();
+     bee:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		}
+		
+		if(fingerTapped==TRUE) break;
+     bf2:	80 91 c6 00 	lds	r24, 0x00C6
+     bf6:	81 30       	cpi	r24, 0x01	; 1
+     bf8:	29 f0       	breq	.+10     	; 0xc04 <PSRegisterFingerTwo+0xfe>
+	
+	OpenPortToFP();
+    Clear_Display();
+	strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[2]))); //please tap your finger
+	LCD_Display(buffer);
+	while(fingerTapped == FALSE){
+     bfa:	d0 91 c6 00 	lds	r29, 0x00C6
+     bfe:	dd 23       	and	r29, r29
+     c00:	09 f4       	brne	.+2      	; 0xc04 <PSRegisterFingerTwo+0xfe>
+     c02:	a3 cf       	rjmp	.-186    	; 0xb4a <PSRegisterFingerTwo+0x44>
+		}
+		
+		if(fingerTapped==TRUE) break;
+		
+    }
+    fingerTapped =FALSE;
+     c04:	10 92 c6 00 	sts	0x00C6, r1
+   
+	
+}
+     c08:	df 91       	pop	r29
+     c0a:	cf 91       	pop	r28
+     c0c:	1f 91       	pop	r17
+     c0e:	0f 91       	pop	r16
+     c10:	ff 90       	pop	r15
+     c12:	df 90       	pop	r13
+     c14:	cf 90       	pop	r12
+     c16:	08 95       	ret
+
+00000c18 <PSStoreCharFile>:
+		
+	}
+	
+	OpenPortToFP();
+}
+void PSStoreCharFile(int pID){
+     c18:	1f 93       	push	r17
+     c1a:	cf 93       	push	r28
+     c1c:	df 93       	push	r29
+     c1e:	d8 2f       	mov	r29, r24
+     c20:	19 2f       	mov	r17, r25
+	
+	OpenPortToFP();
+     c22:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	int sum    = 14 + pID;
+	
+	USART_Transmit(0xEF);
+     c26:	8f ee       	ldi	r24, 0xEF	; 239
+     c28:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+     c2c:	81 e0       	ldi	r24, 0x01	; 1
+     c2e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     c32:	8f ef       	ldi	r24, 0xFF	; 255
+     c34:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     c38:	8f ef       	ldi	r24, 0xFF	; 255
+     c3a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     c3e:	8f ef       	ldi	r24, 0xFF	; 255
+     c40:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     c44:	8f ef       	ldi	r24, 0xFF	; 255
+     c46:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+     c4a:	81 e0       	ldi	r24, 0x01	; 1
+     c4c:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+     c50:	80 e0       	ldi	r24, 0x00	; 0
+     c52:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x06);
+     c56:	86 e0       	ldi	r24, 0x06	; 6
+     c58:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x06);
+     c5c:	86 e0       	ldi	r24, 0x06	; 6
+     c5e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(BUFFER_ID01);
+     c62:	81 e0       	ldi	r24, 0x01	; 1
+     c64:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+     c68:	80 e0       	ldi	r24, 0x00	; 0
+     c6a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(pID);
+     c6e:	8d 2f       	mov	r24, r29
+     c70:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);//C
+     c74:	80 e0       	ldi	r24, 0x00	; 0
+     c76:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(sum);//C
+     c7a:	8e e0       	ldi	r24, 0x0E	; 14
+     c7c:	8d 0f       	add	r24, r29
+     c7e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+    for(count=0; count<12; count++){
+     c82:	10 92 c5 00 	sts	0x00C5, r1
+     c86:	c0 e0       	ldi	r28, 0x00	; 0
+				
+		returnedValue[count]=USART_Receive();
+     c88:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     c8c:	ec 2f       	mov	r30, r28
+     c8e:	f0 e0       	ldi	r31, 0x00	; 0
+     c90:	e4 53       	subi	r30, 0x34	; 52
+     c92:	fe 4f       	sbci	r31, 0xFE	; 254
+     c94:	80 83       	st	Z, r24
+	USART_Transmit(0x00);
+	USART_Transmit(pID);
+	USART_Transmit(0x00);//C
+	USART_Transmit(sum);//C
+	
+    for(count=0; count<12; count++){
+     c96:	e0 91 c5 00 	lds	r30, 0x00C5
+     c9a:	c1 e0       	ldi	r28, 0x01	; 1
+     c9c:	ce 0f       	add	r28, r30
+     c9e:	c0 93 c5 00 	sts	0x00C5, r28
+     ca2:	cc 30       	cpi	r28, 0x0C	; 12
+     ca4:	88 f3       	brcs	.-30     	; 0xc88 <PSStoreCharFile+0x70>
+				
+		returnedValue[count]=USART_Receive();
+    }
+	
+	
+	OpenPortToPC();
+     ca6:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	
+	if(returnedValue[9]==0x00)
+     caa:	20 91 d5 01 	lds	r18, 0x01D5
+     cae:	21 11       	cpse	r18, r1
+     cb0:	2c c0       	rjmp	.+88     	; 0xd0a <PSStoreCharFile+0xf2>
+	{
+		PORTC|=(1<<1);
+     cb2:	a9 9a       	sbi	0x15, 1	; 21
+		Clear_Display();
+     cb4:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[8]))); //LCD_Display("The finger with ID : ");
+     cb8:	e9 ec       	ldi	r30, 0xC9	; 201
+     cba:	f0 e0       	ldi	r31, 0x00	; 0
+     cbc:	65 91       	lpm	r22, Z+
+     cbe:	74 91       	lpm	r23, Z
+     cc0:	8d ec       	ldi	r24, 0xCD	; 205
+     cc2:	91 e0       	ldi	r25, 0x01	; 1
+     cc4:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     cc8:	8d ec       	ldi	r24, 0xCD	; 205
+     cca:	91 e0       	ldi	r25, 0x01	; 1
+     ccc:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		LCD_Display(itoa(pID, buffer, 10));
+     cd0:	4a e0       	ldi	r20, 0x0A	; 10
+     cd2:	50 e0       	ldi	r21, 0x00	; 0
+     cd4:	6d ec       	ldi	r22, 0xCD	; 205
+     cd6:	71 e0       	ldi	r23, 0x01	; 1
+     cd8:	8d 2f       	mov	r24, r29
+     cda:	91 2f       	mov	r25, r17
+     cdc:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+     ce0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[11]))); //LCD_Display(" was stored.");
+     ce4:	ef ec       	ldi	r30, 0xCF	; 207
+     ce6:	f0 e0       	ldi	r31, 0x00	; 0
+     ce8:	65 91       	lpm	r22, Z+
+     cea:	74 91       	lpm	r23, Z
+     cec:	8d ec       	ldi	r24, 0xCD	; 205
+     cee:	91 e0       	ldi	r25, 0x01	; 1
+     cf0:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     cf4:	8d ec       	ldi	r24, 0xCD	; 205
+     cf6:	91 e0       	ldi	r25, 0x01	; 1
+     cf8:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     cfc:	88 ee       	ldi	r24, 0xE8	; 232
+     cfe:	93 e0       	ldi	r25, 0x03	; 3
+     d00:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     d04:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     d08:	50 c0       	rjmp	.+160    	; 0xdaa <PSStoreCharFile+0x192>
+	}
+	else if(returnedValue[9]==0x01){
+     d0a:	21 30       	cpi	r18, 0x01	; 1
+     d0c:	99 f4       	brne	.+38     	; 0xd34 <PSStoreCharFile+0x11c>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     d0e:	e1 ec       	ldi	r30, 0xC1	; 193
+     d10:	f0 e0       	ldi	r31, 0x00	; 0
+     d12:	65 91       	lpm	r22, Z+
+     d14:	74 91       	lpm	r23, Z
+     d16:	8d ec       	ldi	r24, 0xCD	; 205
+     d18:	91 e0       	ldi	r25, 0x01	; 1
+     d1a:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     d1e:	8d ec       	ldi	r24, 0xCD	; 205
+     d20:	91 e0       	ldi	r25, 0x01	; 1
+     d22:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     d26:	88 ee       	ldi	r24, 0xE8	; 232
+     d28:	93 e0       	ldi	r25, 0x03	; 3
+     d2a:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     d2e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     d32:	3b c0       	rjmp	.+118    	; 0xdaa <PSStoreCharFile+0x192>
+		
+	}
+	else if(returnedValue[9]==0x0B){
+     d34:	2b 30       	cpi	r18, 0x0B	; 11
+     d36:	19 f5       	brne	.+70     	; 0xd7e <PSStoreCharFile+0x166>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[12]))); //The ID : 
+     d38:	e1 ed       	ldi	r30, 0xD1	; 209
+     d3a:	f0 e0       	ldi	r31, 0x00	; 0
+     d3c:	65 91       	lpm	r22, Z+
+     d3e:	74 91       	lpm	r23, Z
+     d40:	8d ec       	ldi	r24, 0xCD	; 205
+     d42:	91 e0       	ldi	r25, 0x01	; 1
+     d44:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     d48:	8d ec       	ldi	r24, 0xCD	; 205
+     d4a:	91 e0       	ldi	r25, 0x01	; 1
+     d4c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		LCD_Display(pID);
+     d50:	8d 2f       	mov	r24, r29
+     d52:	91 2f       	mov	r25, r17
+     d54:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[13]))); //is beyond the scope
+     d58:	e3 ed       	ldi	r30, 0xD3	; 211
+     d5a:	f0 e0       	ldi	r31, 0x00	; 0
+     d5c:	65 91       	lpm	r22, Z+
+     d5e:	74 91       	lpm	r23, Z
+     d60:	8d ec       	ldi	r24, 0xCD	; 205
+     d62:	91 e0       	ldi	r25, 0x01	; 1
+     d64:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     d68:	8d ec       	ldi	r24, 0xCD	; 205
+     d6a:	91 e0       	ldi	r25, 0x01	; 1
+     d6c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     d70:	88 ee       	ldi	r24, 0xE8	; 232
+     d72:	93 e0       	ldi	r25, 0x03	; 3
+     d74:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     d78:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     d7c:	16 c0       	rjmp	.+44     	; 0xdaa <PSStoreCharFile+0x192>
+		
+	}
+	else if(returnedValue[9]==0x18){
+     d7e:	28 31       	cpi	r18, 0x18	; 24
+     d80:	a1 f4       	brne	.+40     	; 0xdaa <PSStoreCharFile+0x192>
+		fingerTapped = FALSE;
+     d82:	10 92 c6 00 	sts	0x00C6, r1
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[14]))); //LCD_Display("Error when writing flash");
+     d86:	e5 ed       	ldi	r30, 0xD5	; 213
+     d88:	f0 e0       	ldi	r31, 0x00	; 0
+     d8a:	65 91       	lpm	r22, Z+
+     d8c:	74 91       	lpm	r23, Z
+     d8e:	8d ec       	ldi	r24, 0xCD	; 205
+     d90:	91 e0       	ldi	r25, 0x01	; 1
+     d92:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     d96:	8d ec       	ldi	r24, 0xCD	; 205
+     d98:	91 e0       	ldi	r25, 0x01	; 1
+     d9a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     d9e:	88 ee       	ldi	r24, 0xE8	; 232
+     da0:	93 e0       	ldi	r25, 0x03	; 3
+     da2:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     da6:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		
+	}
+	
+	OpenPortToFP();
+     daa:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+}
+     dae:	df 91       	pop	r29
+     db0:	cf 91       	pop	r28
+     db2:	1f 91       	pop	r17
+     db4:	08 95       	ret
+
+00000db6 <PSCombineTwoCharFile>:
+	}
+   
+    OpenPortToFP();
+	return match; 
+}
+void PSCombineTwoCharFile(){
+     db6:	0f 93       	push	r16
+     db8:	1f 93       	push	r17
+     dba:	cf 93       	push	r28
+     dbc:	df 93       	push	r29
+	OpenPortToFP();
+     dbe:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	int count;
+	for(count=0; count<12; count++){
+     dc2:	c0 e0       	ldi	r28, 0x00	; 0
+     dc4:	d0 e0       	ldi	r29, 0x00	; 0
+		
+		USART_Transmit(PSCombineTwoCharFileCommands[count]);
+     dc6:	fe 01       	movw	r30, r28
+     dc8:	e3 59       	subi	r30, 0x93	; 147
+     dca:	ff 4f       	sbci	r31, 0xFF	; 255
+     dcc:	80 81       	ld	r24, Z
+     dce:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		
+		if(count==11){
+     dd2:	cb 30       	cpi	r28, 0x0B	; 11
+     dd4:	d1 05       	cpc	r29, r1
+     dd6:	59 f4       	brne	.+22     	; 0xdee <PSCombineTwoCharFile+0x38>
+     dd8:	cc ec       	ldi	r28, 0xCC	; 204
+     dda:	d1 e0       	ldi	r29, 0x01	; 1
+     ddc:	08 ed       	ldi	r16, 0xD8	; 216
+     dde:	11 e0       	ldi	r17, 0x01	; 1
+			for(count=0; count<12; count++){
+				
+				returnedValue[count]=USART_Receive();
+     de0:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     de4:	89 93       	st	Y+, r24
+	for(count=0; count<12; count++){
+		
+		USART_Transmit(PSCombineTwoCharFileCommands[count]);
+		
+		if(count==11){
+			for(count=0; count<12; count++){
+     de6:	c0 17       	cp	r28, r16
+     de8:	d1 07       	cpc	r29, r17
+     dea:	d1 f7       	brne	.-12     	; 0xde0 <PSCombineTwoCharFile+0x2a>
+     dec:	04 c0       	rjmp	.+8      	; 0xdf6 <PSCombineTwoCharFile+0x40>
+	return match; 
+}
+void PSCombineTwoCharFile(){
+	OpenPortToFP();
+	int count;
+	for(count=0; count<12; count++){
+     dee:	21 96       	adiw	r28, 0x01	; 1
+     df0:	cc 30       	cpi	r28, 0x0C	; 12
+     df2:	d1 05       	cpc	r29, r1
+     df4:	44 f3       	brlt	.-48     	; 0xdc6 <PSCombineTwoCharFile+0x10>
+				
+				returnedValue[count]=USART_Receive();
+			}
+		}
+	}
+	if(returnedValue[9]==0x00)
+     df6:	80 91 d5 01 	lds	r24, 0x01D5
+     dfa:	81 11       	cpse	r24, r1
+     dfc:	26 c0       	rjmp	.+76     	; 0xe4a <PSCombineTwoCharFile+0x94>
+	{
+		PORTC|=(1<<1);
+     dfe:	a9 9a       	sbi	0x15, 1	; 21
+	    Clear_Display();                                                       //LCD_Display("Template Combined Successfully");
+     e00:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[19]))); //LCD_Display("Please enter the ID : ");
+     e04:	ef ed       	ldi	r30, 0xDF	; 223
+     e06:	f0 e0       	ldi	r31, 0x00	; 0
+     e08:	65 91       	lpm	r22, Z+
+     e0a:	74 91       	lpm	r23, Z
+     e0c:	8d ec       	ldi	r24, 0xCD	; 205
+     e0e:	91 e0       	ldi	r25, 0x01	; 1
+     e10:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer); 
+     e14:	8d ec       	ldi	r24, 0xCD	; 205
+     e16:	91 e0       	ldi	r25, 0x01	; 1
+     e18:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		OpenPortToPC();                                    
+     e1c:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+		int ID = USART_Receive();
+     e20:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     e24:	ec 01       	movw	r28, r24
+		itoa(ID, buffer, 10);
+     e26:	4a e0       	ldi	r20, 0x0A	; 10
+     e28:	50 e0       	ldi	r21, 0x00	; 0
+     e2a:	6d ec       	ldi	r22, 0xCD	; 205
+     e2c:	71 e0       	ldi	r23, 0x01	; 1
+     e2e:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+		LCD_Display(buffer);
+     e32:	8d ec       	ldi	r24, 0xCD	; 205
+     e34:	91 e0       	ldi	r25, 0x01	; 1
+     e36:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     e3a:	88 ee       	ldi	r24, 0xE8	; 232
+     e3c:	93 e0       	ldi	r25, 0x03	; 3
+     e3e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		PSStoreCharFile(ID);
+     e42:	ce 01       	movw	r24, r28
+     e44:	0e 94 0c 06 	call	0xc18	; 0xc18 <PSStoreCharFile>
+     e48:	2b c0       	rjmp	.+86     	; 0xea0 <PSCombineTwoCharFile+0xea>
+	}
+	else if(returnedValue[9]==0x01){
+     e4a:	81 30       	cpi	r24, 0x01	; 1
+     e4c:	99 f4       	brne	.+38     	; 0xe74 <PSCombineTwoCharFile+0xbe>
+		Clear_Display();
+     e4e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     e52:	e1 ec       	ldi	r30, 0xC1	; 193
+     e54:	f0 e0       	ldi	r31, 0x00	; 0
+     e56:	65 91       	lpm	r22, Z+
+     e58:	74 91       	lpm	r23, Z
+     e5a:	8d ec       	ldi	r24, 0xCD	; 205
+     e5c:	91 e0       	ldi	r25, 0x01	; 1
+     e5e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     e62:	8d ec       	ldi	r24, 0xCD	; 205
+     e64:	91 e0       	ldi	r25, 0x01	; 1
+     e66:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     e6a:	88 ee       	ldi	r24, 0xE8	; 232
+     e6c:	93 e0       	ldi	r25, 0x03	; 3
+     e6e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+     e72:	16 c0       	rjmp	.+44     	; 0xea0 <PSCombineTwoCharFile+0xea>
+		
+		
+	}
+	else if(returnedValue[9]==0x0A){
+     e74:	8a 30       	cpi	r24, 0x0A	; 10
+     e76:	a1 f4       	brne	.+40     	; 0xea0 <PSCombineTwoCharFile+0xea>
+		Clear_Display();
+     e78:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[5]))); 
+     e7c:	e3 ec       	ldi	r30, 0xC3	; 195
+     e7e:	f0 e0       	ldi	r31, 0x00	; 0
+     e80:	65 91       	lpm	r22, Z+
+     e82:	74 91       	lpm	r23, Z
+     e84:	8d ec       	ldi	r24, 0xCD	; 205
+     e86:	91 e0       	ldi	r25, 0x01	; 1
+     e88:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+	    LCD_Display(buffer);
+     e8c:	8d ec       	ldi	r24, 0xCD	; 205
+     e8e:	91 e0       	ldi	r25, 0x01	; 1
+     e90:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     e94:	88 ee       	ldi	r24, 0xE8	; 232
+     e96:	93 e0       	ldi	r25, 0x03	; 3
+     e98:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     e9c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		
+	}
+	
+	OpenPortToFP();
+     ea0:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+}
+     ea4:	df 91       	pop	r29
+     ea6:	cf 91       	pop	r28
+     ea8:	1f 91       	pop	r17
+     eaa:	0f 91       	pop	r16
+     eac:	08 95       	ret
+
+00000eae <PSMatchTwoBuffer>:
+		
+	}
+    OpenPortToFP();
+	
+}
+unsigned char PSMatchTwoBuffer(){
+     eae:	cf 93       	push	r28
+	 OpenPortToFP();
+     eb0:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+  
+  	USART_Transmit(0xEF);
+     eb4:	8f ee       	ldi	r24, 0xEF	; 239
+     eb6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+     eba:	81 e0       	ldi	r24, 0x01	; 1
+     ebc:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     ec0:	8f ef       	ldi	r24, 0xFF	; 255
+     ec2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     ec6:	8f ef       	ldi	r24, 0xFF	; 255
+     ec8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     ecc:	8f ef       	ldi	r24, 0xFF	; 255
+     ece:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+     ed2:	8f ef       	ldi	r24, 0xFF	; 255
+     ed4:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+     ed8:	81 e0       	ldi	r24, 0x01	; 1
+     eda:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+     ede:	80 e0       	ldi	r24, 0x00	; 0
+     ee0:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x03);
+     ee4:	83 e0       	ldi	r24, 0x03	; 3
+     ee6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x03);
+     eea:	83 e0       	ldi	r24, 0x03	; 3
+     eec:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+     ef0:	80 e0       	ldi	r24, 0x00	; 0
+     ef2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x07);
+     ef6:	87 e0       	ldi	r24, 0x07	; 7
+     ef8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+	
+   for(count=0; count<14; count++){
+     efc:	10 92 c5 00 	sts	0x00C5, r1
+     f00:	c0 e0       	ldi	r28, 0x00	; 0
+			returnedValue[count]=USART_Receive();
+     f02:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+     f06:	ec 2f       	mov	r30, r28
+     f08:	f0 e0       	ldi	r31, 0x00	; 0
+     f0a:	e4 53       	subi	r30, 0x34	; 52
+     f0c:	fe 4f       	sbci	r31, 0xFE	; 254
+     f0e:	80 83       	st	Z, r24
+	USART_Transmit(0x03);
+	USART_Transmit(0x00);
+	USART_Transmit(0x07);
+	
+	
+   for(count=0; count<14; count++){
+     f10:	e0 91 c5 00 	lds	r30, 0x00C5
+     f14:	c1 e0       	ldi	r28, 0x01	; 1
+     f16:	ce 0f       	add	r28, r30
+     f18:	c0 93 c5 00 	sts	0x00C5, r28
+     f1c:	ce 30       	cpi	r28, 0x0E	; 14
+     f1e:	88 f3       	brcs	.-30     	; 0xf02 <PSMatchTwoBuffer+0x54>
+	for(i=0; i<14; i++){
+		USART_Transmit(returnedValue[i]);
+		delay_ms(2);
+		
+	}*/
+	OpenPortToFP();
+     f20:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	if(returnedValue[9]==0x00){
+     f24:	80 91 d5 01 	lds	r24, 0x01D5
+     f28:	81 11       	cpse	r24, r1
+     f2a:	1b c0       	rjmp	.+54     	; 0xf62 <PSMatchTwoBuffer+0xb4>
+		PORTC|=(1<<1);
+     f2c:	a9 9a       	sbi	0x15, 1	; 21
+		Clear_Display();
+     f2e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[9])));  //Template of two buffer matched
+     f32:	eb ec       	ldi	r30, 0xCB	; 203
+     f34:	f0 e0       	ldi	r31, 0x00	; 0
+     f36:	65 91       	lpm	r22, Z+
+     f38:	74 91       	lpm	r23, Z
+     f3a:	8d ec       	ldi	r24, 0xCD	; 205
+     f3c:	91 e0       	ldi	r25, 0x01	; 1
+     f3e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     f42:	8d ec       	ldi	r24, 0xCD	; 205
+     f44:	91 e0       	ldi	r25, 0x01	; 1
+     f46:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		/*unsigned char ID1 = returnedValue[10];
+		unsigned char ID2 = returnedValue[11];
+		USART_Transmit(ID1);
+		USART_Transmit(ID2);*/
+		match        = TRUE;
+     f4a:	81 e0       	ldi	r24, 0x01	; 1
+     f4c:	80 93 c4 00 	sts	0x00C4, r24
+		delay_ms(1000);
+     f50:	88 ee       	ldi	r24, 0xE8	; 232
+     f52:	93 e0       	ldi	r25, 0x03	; 3
+     f54:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     f58:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		PSCombineTwoCharFile();
+     f5c:	0e 94 db 06 	call	0xdb6	; 0xdb6 <PSCombineTwoCharFile>
+     f60:	2d c0       	rjmp	.+90     	; 0xfbc <PSMatchTwoBuffer+0x10e>
+		
+	}
+	else if(returnedValue[9]==0x01){
+     f62:	81 30       	cpi	r24, 0x01	; 1
+     f64:	a9 f4       	brne	.+42     	; 0xf90 <PSMatchTwoBuffer+0xe2>
+		match        = FALSE;
+     f66:	10 92 c4 00 	sts	0x00C4, r1
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+     f6a:	e1 ec       	ldi	r30, 0xC1	; 193
+     f6c:	f0 e0       	ldi	r31, 0x00	; 0
+     f6e:	65 91       	lpm	r22, Z+
+     f70:	74 91       	lpm	r23, Z
+     f72:	8d ec       	ldi	r24, 0xCD	; 205
+     f74:	91 e0       	ldi	r25, 0x01	; 1
+     f76:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+     f7a:	8d ec       	ldi	r24, 0xCD	; 205
+     f7c:	91 e0       	ldi	r25, 0x01	; 1
+     f7e:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     f82:	88 ee       	ldi	r24, 0xE8	; 232
+     f84:	93 e0       	ldi	r25, 0x03	; 3
+     f86:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+     f8a:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+     f8e:	16 c0       	rjmp	.+44     	; 0xfbc <PSMatchTwoBuffer+0x10e>
+	}
+	else if(returnedValue[9]==0x08){
+     f90:	88 30       	cpi	r24, 0x08	; 8
+     f92:	a1 f4       	brne	.+40     	; 0xfbc <PSMatchTwoBuffer+0x10e>
+		match        = FALSE;
+     f94:	10 92 c4 00 	sts	0x00C4, r1
+		Clear_Display();
+     f98:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[10]))); //LCD_Display("Template do not match");
+     f9c:	ed ec       	ldi	r30, 0xCD	; 205
+     f9e:	f0 e0       	ldi	r31, 0x00	; 0
+     fa0:	65 91       	lpm	r22, Z+
+     fa2:	74 91       	lpm	r23, Z
+     fa4:	8d ec       	ldi	r24, 0xCD	; 205
+     fa6:	91 e0       	ldi	r25, 0x01	; 1
+     fa8:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);                                                
+     fac:	8d ec       	ldi	r24, 0xCD	; 205
+     fae:	91 e0       	ldi	r25, 0x01	; 1
+     fb0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+     fb4:	88 ee       	ldi	r24, 0xE8	; 232
+     fb6:	93 e0       	ldi	r25, 0x03	; 3
+     fb8:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		
+	}
+   
+    OpenPortToFP();
+     fbc:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	return match; 
+}
+     fc0:	80 91 c4 00 	lds	r24, 0x00C4
+     fc4:	cf 91       	pop	r28
+     fc6:	08 95       	ret
+
+00000fc8 <PSSearchForAFingerB1>:
+		
+	}
+	
+	OpenPortToFP();
+}
+unsigned char PSSearchForAFingerB1(int sPage, int pNum){
+     fc8:	df 92       	push	r13
+     fca:	ef 92       	push	r14
+     fcc:	ff 92       	push	r15
+     fce:	0f 93       	push	r16
+     fd0:	1f 93       	push	r17
+     fd2:	cf 93       	push	r28
+     fd4:	df 93       	push	r29
+     fd6:	7c 01       	movw	r14, r24
+     fd8:	8b 01       	movw	r16, r22
+	int PSfound;
+	OpenPortToFP();
+     fda:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+	int sum = 14 + sPage + pNum;
+     fde:	e7 01       	movw	r28, r14
+     fe0:	2e 96       	adiw	r28, 0x0e	; 14
+     fe2:	c0 0f       	add	r28, r16
+     fe4:	d1 1f       	adc	r29, r17
+			
+		USART_Transmit(0xEF);
+     fe6:	8f ee       	ldi	r24, 0xEF	; 239
+     fe8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x01);
+     fec:	81 e0       	ldi	r24, 0x01	; 1
+     fee:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0xFF);
+     ff2:	8f ef       	ldi	r24, 0xFF	; 255
+     ff4:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0xFF);
+     ff8:	8f ef       	ldi	r24, 0xFF	; 255
+     ffa:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0xFF);
+     ffe:	8f ef       	ldi	r24, 0xFF	; 255
+    1000:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0xFF);
+    1004:	8f ef       	ldi	r24, 0xFF	; 255
+    1006:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x01);
+    100a:	81 e0       	ldi	r24, 0x01	; 1
+    100c:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x00);
+    1010:	80 e0       	ldi	r24, 0x00	; 0
+    1012:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x08);
+    1016:	88 e0       	ldi	r24, 0x08	; 8
+    1018:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x04);
+    101c:	84 e0       	ldi	r24, 0x04	; 4
+    101e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(BUFFER_ID01);
+    1022:	81 e0       	ldi	r24, 0x01	; 1
+    1024:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x00);
+    1028:	80 e0       	ldi	r24, 0x00	; 0
+    102a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(sPage);
+    102e:	8e 2d       	mov	r24, r14
+    1030:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x00);
+    1034:	80 e0       	ldi	r24, 0x00	; 0
+    1036:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(pNum);
+    103a:	80 2f       	mov	r24, r16
+    103c:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(0x00);
+    1040:	80 e0       	ldi	r24, 0x00	; 0
+    1042:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		USART_Transmit(sum);
+    1046:	8c 2f       	mov	r24, r28
+    1048:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+
+	for(count=0; count<16; count++){
+    104c:	10 92 c5 00 	sts	0x00C5, r1
+    1050:	c0 e0       	ldi	r28, 0x00	; 0
+		
+		returnedValue[count]=USART_Receive();
+    1052:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+    1056:	ec 2f       	mov	r30, r28
+    1058:	f0 e0       	ldi	r31, 0x00	; 0
+    105a:	e4 53       	subi	r30, 0x34	; 52
+    105c:	fe 4f       	sbci	r31, 0xFE	; 254
+    105e:	80 83       	st	Z, r24
+		USART_Transmit(0x00);
+		USART_Transmit(pNum);
+		USART_Transmit(0x00);
+		USART_Transmit(sum);
+
+	for(count=0; count<16; count++){
+    1060:	e0 91 c5 00 	lds	r30, 0x00C5
+    1064:	c1 e0       	ldi	r28, 0x01	; 1
+    1066:	ce 0f       	add	r28, r30
+    1068:	c0 93 c5 00 	sts	0x00C5, r28
+    106c:	c0 31       	cpi	r28, 0x10	; 16
+    106e:	88 f3       	brcs	.-30     	; 0x1052 <PSSearchForAFingerB1+0x8a>
+		returnedValue[count]=USART_Receive();
+	}
+
+	
+	
+	OpenPortToPC();
+    1070:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+	     
+	    // USART_Transmit(returnedValue[i]);
+	    // delay_ms(2);
+	     
+    // }
+	if(returnedValue[9]==0x00){
+    1074:	90 91 d5 01 	lds	r25, 0x01D5
+    1078:	91 11       	cpse	r25, r1
+    107a:	31 c0       	rjmp	.+98     	; 0x10de <PSSearchForAFingerB1+0x116>
+		PORTC|=(1<<1);
+    107c:	a9 9a       	sbi	0x15, 1	; 21
+		int ID1 = returnedValue[10];
+		int ID2 = returnedValue[11];
+    107e:	c0 91 d7 01 	lds	r28, 0x01D7
+		//USART_Transmit(ID1);
+		USART_Transmit(ID2);
+    1082:	8c 2f       	mov	r24, r28
+    1084:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+		strcpy_P(buffer,(PGM_P)pgm_read_word(&(string_response_table[8]))); //LCD_Display("Finger with ID : ");
+    1088:	e9 ec       	ldi	r30, 0xC9	; 201
+    108a:	f0 e0       	ldi	r31, 0x00	; 0
+    108c:	65 91       	lpm	r22, Z+
+    108e:	74 91       	lpm	r23, Z
+    1090:	8d ec       	ldi	r24, 0xCD	; 205
+    1092:	91 e0       	ldi	r25, 0x01	; 1
+    1094:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1098:	8d ec       	ldi	r24, 0xCD	; 205
+    109a:	91 e0       	ldi	r25, 0x01	; 1
+    109c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		LCD_Display(itoa(ID2,buffer, 10));
+    10a0:	4a e0       	ldi	r20, 0x0A	; 10
+    10a2:	50 e0       	ldi	r21, 0x00	; 0
+    10a4:	6d ec       	ldi	r22, 0xCD	; 205
+    10a6:	71 e0       	ldi	r23, 0x01	; 1
+    10a8:	8c 2f       	mov	r24, r28
+    10aa:	90 e0       	ldi	r25, 0x00	; 0
+    10ac:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+    10b0:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		strcpy_P(buffer,(PGM_P)pgm_read_word(&(string_response_table[18]))); //LCD_Display("was found");
+    10b4:	ed ed       	ldi	r30, 0xDD	; 221
+    10b6:	f0 e0       	ldi	r31, 0x00	; 0
+    10b8:	65 91       	lpm	r22, Z+
+    10ba:	74 91       	lpm	r23, Z
+    10bc:	8d ec       	ldi	r24, 0xCD	; 205
+    10be:	91 e0       	ldi	r25, 0x01	; 1
+    10c0:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    10c4:	8d ec       	ldi	r24, 0xCD	; 205
+    10c6:	91 e0       	ldi	r25, 0x01	; 1
+    10c8:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+    10cc:	88 ee       	ldi	r24, 0xE8	; 232
+    10ce:	93 e0       	ldi	r25, 0x03	; 3
+    10d0:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    10d4:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		PSfound = TRUE;
+    10d8:	dd 24       	eor	r13, r13
+    10da:	d3 94       	inc	r13
+    10dc:	2a c0       	rjmp	.+84     	; 0x1132 <PSSearchForAFingerB1+0x16a>
+	}
+	else if(returnedValue[9]==0x01){
+    10de:	91 30       	cpi	r25, 0x01	; 1
+    10e0:	99 f4       	brne	.+38     	; 0x1108 <PSSearchForAFingerB1+0x140>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //LCD_Display("Error when receiving package");
+    10e2:	e1 ec       	ldi	r30, 0xC1	; 193
+    10e4:	f0 e0       	ldi	r31, 0x00	; 0
+    10e6:	65 91       	lpm	r22, Z+
+    10e8:	74 91       	lpm	r23, Z
+    10ea:	8d ec       	ldi	r24, 0xCD	; 205
+    10ec:	91 e0       	ldi	r25, 0x01	; 1
+    10ee:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    10f2:	8d ec       	ldi	r24, 0xCD	; 205
+    10f4:	91 e0       	ldi	r25, 0x01	; 1
+    10f6:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+    10fa:	88 ee       	ldi	r24, 0xE8	; 232
+    10fc:	93 e0       	ldi	r25, 0x03	; 3
+    10fe:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1102:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    1106:	15 c0       	rjmp	.+42     	; 0x1132 <PSSearchForAFingerB1+0x16a>
+        //PSSearchForAFingerB2(sPage, pNum);
+		
+	}
+	else if(returnedValue[9]==0x09){
+    1108:	99 30       	cpi	r25, 0x09	; 9
+    110a:	99 f4       	brne	.+38     	; 0x1132 <PSSearchForAFingerB1+0x16a>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[16]))); //LCD_Display("No matching found b1");
+    110c:	e9 ed       	ldi	r30, 0xD9	; 217
+    110e:	f0 e0       	ldi	r31, 0x00	; 0
+    1110:	65 91       	lpm	r22, Z+
+    1112:	74 91       	lpm	r23, Z
+    1114:	8d ec       	ldi	r24, 0xCD	; 205
+    1116:	91 e0       	ldi	r25, 0x01	; 1
+    1118:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    111c:	8d ec       	ldi	r24, 0xCD	; 205
+    111e:	91 e0       	ldi	r25, 0x01	; 1
+    1120:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+    1124:	88 ee       	ldi	r24, 0xE8	; 232
+    1126:	93 e0       	ldi	r25, 0x03	; 3
+    1128:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    112c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		PSfound = FALSE;
+    1130:	d1 2c       	mov	r13, r1
+		//PSSearchForAFingerB2(sPage, pNum);  
+	}
+	OpenPortToFP();
+    1132:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	return PSfound;
+}
+    1136:	8d 2d       	mov	r24, r13
+    1138:	df 91       	pop	r29
+    113a:	cf 91       	pop	r28
+    113c:	1f 91       	pop	r17
+    113e:	0f 91       	pop	r16
+    1140:	ff 90       	pop	r15
+    1142:	ef 90       	pop	r14
+    1144:	df 90       	pop	r13
+    1146:	08 95       	ret
+
+00001148 <PSTempleteNum>:
+		
+	}
+	
+	OpenPortToFP();
+}
+int PSTempleteNum(){
+    1148:	ef 92       	push	r14
+    114a:	ff 92       	push	r15
+    114c:	0f 93       	push	r16
+    114e:	1f 93       	push	r17
+    1150:	cf 93       	push	r28
+    1152:	df 93       	push	r29
+	
+	OpenPortToFP();
+    1154:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	int numTemp;
+	USART_Transmit(0xEF);
+    1158:	8f ee       	ldi	r24, 0xEF	; 239
+    115a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    115e:	81 e0       	ldi	r24, 0x01	; 1
+    1160:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    1164:	8f ef       	ldi	r24, 0xFF	; 255
+    1166:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    116a:	8f ef       	ldi	r24, 0xFF	; 255
+    116c:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    1170:	8f ef       	ldi	r24, 0xFF	; 255
+    1172:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    1176:	8f ef       	ldi	r24, 0xFF	; 255
+    1178:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    117c:	81 e0       	ldi	r24, 0x01	; 1
+    117e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    1182:	80 e0       	ldi	r24, 0x00	; 0
+    1184:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x03);
+    1188:	83 e0       	ldi	r24, 0x03	; 3
+    118a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x1D);
+    118e:	8d e1       	ldi	r24, 0x1D	; 29
+    1190:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    1194:	80 e0       	ldi	r24, 0x00	; 0
+    1196:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x21);
+    119a:	81 e2       	ldi	r24, 0x21	; 33
+    119c:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+	
+	for(count=0; count<14; count++){
+    11a0:	10 92 c5 00 	sts	0x00C5, r1
+    11a4:	c0 e0       	ldi	r28, 0x00	; 0
+		
+		returnedValue[count]=USART_Receive();
+    11a6:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+    11aa:	ec 2f       	mov	r30, r28
+    11ac:	f0 e0       	ldi	r31, 0x00	; 0
+    11ae:	e4 53       	subi	r30, 0x34	; 52
+    11b0:	fe 4f       	sbci	r31, 0xFE	; 254
+    11b2:	80 83       	st	Z, r24
+	USART_Transmit(0x1D);
+	USART_Transmit(0x00);
+	USART_Transmit(0x21);
+	
+	
+	for(count=0; count<14; count++){
+    11b4:	e0 91 c5 00 	lds	r30, 0x00C5
+    11b8:	c1 e0       	ldi	r28, 0x01	; 1
+    11ba:	ce 0f       	add	r28, r30
+    11bc:	c0 93 c5 00 	sts	0x00C5, r28
+    11c0:	ce 30       	cpi	r28, 0x0E	; 14
+    11c2:	88 f3       	brcs	.-30     	; 0x11a6 <PSTempleteNum+0x5e>
+		
+		returnedValue[count]=USART_Receive();
+	}
+
+	
+	OpenPortToPC();
+    11c4:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+	
+	OpenPortToFP();
+    11c8:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	if(returnedValue[9]==0x00){
+    11cc:	90 91 d5 01 	lds	r25, 0x01D5
+    11d0:	91 11       	cpse	r25, r1
+    11d2:	3d c0       	rjmp	.+122    	; 0x124e <PSTempleteNum+0x106>
+		PORTC|=(1<<1);
+    11d4:	a9 9a       	sbi	0x15, 1	; 21
+		unsigned char ID1 = returnedValue[10];
+		unsigned char ID2 = returnedValue[11];
+		numTemp = ID1 +ID2;
+    11d6:	e0 90 d6 01 	lds	r14, 0x01D6
+    11da:	f1 2c       	mov	r15, r1
+    11dc:	c0 91 d7 01 	lds	r28, 0x01D7
+    11e0:	d0 e0       	ldi	r29, 0x00	; 0
+    11e2:	87 01       	movw	r16, r14
+    11e4:	0c 0f       	add	r16, r28
+    11e6:	1d 1f       	adc	r17, r29
+		//USART_Transmit(ID1);
+		//USART_Transmit(ID2);
+		Clear_Display();
+    11e8:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[20]))); //Error when receiving package
+    11ec:	e1 ee       	ldi	r30, 0xE1	; 225
+    11ee:	f0 e0       	ldi	r31, 0x00	; 0
+    11f0:	65 91       	lpm	r22, Z+
+    11f2:	74 91       	lpm	r23, Z
+    11f4:	8d ec       	ldi	r24, 0xCD	; 205
+    11f6:	91 e0       	ldi	r25, 0x01	; 1
+    11f8:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    11fc:	8d ec       	ldi	r24, 0xCD	; 205
+    11fe:	91 e0       	ldi	r25, 0x01	; 1
+    1200:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		LCD_Display(itoa(ID1, buffer, 10));
+    1204:	4a e0       	ldi	r20, 0x0A	; 10
+    1206:	50 e0       	ldi	r21, 0x00	; 0
+    1208:	6d ec       	ldi	r22, 0xCD	; 205
+    120a:	71 e0       	ldi	r23, 0x01	; 1
+    120c:	c7 01       	movw	r24, r14
+    120e:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+    1212:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		LCD_Display(itoa(ID2, buffer, 10));
+    1216:	4a e0       	ldi	r20, 0x0A	; 10
+    1218:	50 e0       	ldi	r21, 0x00	; 0
+    121a:	6d ec       	ldi	r22, 0xCD	; 205
+    121c:	71 e0       	ldi	r23, 0x01	; 1
+    121e:	ce 01       	movw	r24, r28
+    1220:	0e 94 8a 0b 	call	0x1714	; 0x1714 <itoa>
+    1224:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[21]))); //Error when receiving package
+    1228:	e3 ee       	ldi	r30, 0xE3	; 227
+    122a:	f0 e0       	ldi	r31, 0x00	; 0
+    122c:	65 91       	lpm	r22, Z+
+    122e:	74 91       	lpm	r23, Z
+    1230:	8d ec       	ldi	r24, 0xCD	; 205
+    1232:	91 e0       	ldi	r25, 0x01	; 1
+    1234:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1238:	8d ec       	ldi	r24, 0xCD	; 205
+    123a:	91 e0       	ldi	r25, 0x01	; 1
+    123c:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(1000);
+    1240:	88 ee       	ldi	r24, 0xE8	; 232
+    1242:	93 e0       	ldi	r25, 0x03	; 3
+    1244:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1248:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    124c:	16 c0       	rjmp	.+44     	; 0x127a <PSTempleteNum+0x132>
+		
+	}
+	else if(returnedValue[9]==0x01){
+    124e:	91 30       	cpi	r25, 0x01	; 1
+    1250:	a1 f4       	brne	.+40     	; 0x127a <PSTempleteNum+0x132>
+		Clear_Display();
+    1252:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+    1256:	e1 ec       	ldi	r30, 0xC1	; 193
+    1258:	f0 e0       	ldi	r31, 0x00	; 0
+    125a:	65 91       	lpm	r22, Z+
+    125c:	74 91       	lpm	r23, Z
+    125e:	8d ec       	ldi	r24, 0xCD	; 205
+    1260:	91 e0       	ldi	r25, 0x01	; 1
+    1262:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1266:	8d ec       	ldi	r24, 0xCD	; 205
+    1268:	91 e0       	ldi	r25, 0x01	; 1
+    126a:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    126e:	84 e6       	ldi	r24, 0x64	; 100
+    1270:	90 e0       	ldi	r25, 0x00	; 0
+    1272:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1276:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		
+	}
+	
+	OpenPortToFP();
+    127a:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+	return numTemp;
+}
+    127e:	c8 01       	movw	r24, r16
+    1280:	df 91       	pop	r29
+    1282:	cf 91       	pop	r28
+    1284:	1f 91       	pop	r17
+    1286:	0f 91       	pop	r16
+    1288:	ff 90       	pop	r15
+    128a:	ef 90       	pop	r14
+    128c:	08 95       	ret
+
+0000128e <PSUpCharFile>:
+void PSUpCharFile(){
+    128e:	bf 92       	push	r11
+    1290:	cf 92       	push	r12
+    1292:	df 92       	push	r13
+    1294:	ef 92       	push	r14
+    1296:	ff 92       	push	r15
+    1298:	0f 93       	push	r16
+    129a:	1f 93       	push	r17
+    129c:	cf 93       	push	r28
+    129e:	df 93       	push	r29
+	
+	OpenPortToFP();
+    12a0:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+	for (count = 0; count<13; count++){
+    12a4:	10 92 c5 00 	sts	0x00C5, r1
+    12a8:	e0 e0       	ldi	r30, 0x00	; 0
+						
+					}
+					
+				OpenPortToPC();
+					
+				if(returnedValue[9] == 00){
+    12aa:	05 ed       	ldi	r16, 0xD5	; 213
+    12ac:	11 e0       	ldi	r17, 0x01	; 1
+						delay_ms(100);
+						Clear_Display();
+						
+					}
+					else{
+						strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[1]))); //Retrieving string from the memory
+    12ae:	0f 2e       	mov	r0, r31
+    12b0:	fb eb       	ldi	r31, 0xBB	; 187
+    12b2:	cf 2e       	mov	r12, r31
+    12b4:	f0 e0       	ldi	r31, 0x00	; 0
+    12b6:	df 2e       	mov	r13, r31
+    12b8:	f0 2d       	mov	r31, r0
+					}
+					
+				OpenPortToPC();
+					
+				if(returnedValue[9] == 00){
+					    for(count=12; count<129; count++){
+    12ba:	0f 2e       	mov	r0, r31
+    12bc:	fc e0       	ldi	r31, 0x0C	; 12
+    12be:	bf 2e       	mov	r11, r31
+    12c0:	f0 2d       	mov	r31, r0
+							
+						    USART_Transmit(returnedValue[count]);
+							 delay_ms(1);
+							
+					    }
+						strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[0]))); //Retrieving string from the memory
+    12c2:	0f 2e       	mov	r0, r31
+    12c4:	f9 eb       	ldi	r31, 0xB9	; 185
+    12c6:	ef 2e       	mov	r14, r31
+    12c8:	f0 e0       	ldi	r31, 0x00	; 0
+    12ca:	ff 2e       	mov	r15, r31
+    12cc:	f0 2d       	mov	r31, r0
+void PSUpCharFile(){
+	
+	OpenPortToFP();
+	
+	for (count = 0; count<13; count++){
+		USART_Transmit(PSUpCharCommands[count]);
+    12ce:	f0 e0       	ldi	r31, 0x00	; 0
+    12d0:	e0 5a       	subi	r30, 0xA0	; 160
+    12d2:	ff 4f       	sbci	r31, 0xFF	; 255
+    12d4:	80 81       	ld	r24, Z
+    12d6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+				if(count==12){
+    12da:	d0 91 c5 00 	lds	r29, 0x00C5
+    12de:	dc 30       	cpi	r29, 0x0C	; 12
+    12e0:	09 f0       	breq	.+2      	; 0x12e4 <PSUpCharFile+0x56>
+    12e2:	50 c0       	rjmp	.+160    	; 0x1384 <PSUpCharFile+0xf6>
+					for(count=0; count<129; count++){
+    12e4:	10 92 c5 00 	sts	0x00C5, r1
+    12e8:	c0 e0       	ldi	r28, 0x00	; 0
+						
+						returnedValue[count] = USART_Receive();
+    12ea:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+    12ee:	ec 2f       	mov	r30, r28
+    12f0:	f0 e0       	ldi	r31, 0x00	; 0
+    12f2:	e4 53       	subi	r30, 0x34	; 52
+    12f4:	fe 4f       	sbci	r31, 0xFE	; 254
+    12f6:	80 83       	st	Z, r24
+	OpenPortToFP();
+	
+	for (count = 0; count<13; count++){
+		USART_Transmit(PSUpCharCommands[count]);
+				if(count==12){
+					for(count=0; count<129; count++){
+    12f8:	e0 91 c5 00 	lds	r30, 0x00C5
+    12fc:	c1 e0       	ldi	r28, 0x01	; 1
+    12fe:	ce 0f       	add	r28, r30
+    1300:	c0 93 c5 00 	sts	0x00C5, r28
+    1304:	c1 38       	cpi	r28, 0x81	; 129
+    1306:	88 f3       	brcs	.-30     	; 0x12ea <PSUpCharFile+0x5c>
+						returnedValue[count] = USART_Receive();
+						 			
+						
+					}
+					
+				OpenPortToPC();
+    1308:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+					
+				if(returnedValue[9] == 00){
+    130c:	f8 01       	movw	r30, r16
+    130e:	80 81       	ld	r24, Z
+    1310:	81 11       	cpse	r24, r1
+    1312:	27 c0       	rjmp	.+78     	; 0x1362 <PSUpCharFile+0xd4>
+					    for(count=12; count<129; count++){
+    1314:	b0 92 c5 00 	sts	0x00C5, r11
+							
+						    USART_Transmit(returnedValue[count]);
+    1318:	ed 2f       	mov	r30, r29
+    131a:	f0 e0       	ldi	r31, 0x00	; 0
+    131c:	e4 53       	subi	r30, 0x34	; 52
+    131e:	fe 4f       	sbci	r31, 0xFE	; 254
+    1320:	80 81       	ld	r24, Z
+    1322:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+							 delay_ms(1);
+    1326:	81 e0       	ldi	r24, 0x01	; 1
+    1328:	90 e0       	ldi	r25, 0x00	; 0
+    132a:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+					}
+					
+				OpenPortToPC();
+					
+				if(returnedValue[9] == 00){
+					    for(count=12; count<129; count++){
+    132e:	e0 91 c5 00 	lds	r30, 0x00C5
+    1332:	d1 e0       	ldi	r29, 0x01	; 1
+    1334:	de 0f       	add	r29, r30
+    1336:	d0 93 c5 00 	sts	0x00C5, r29
+    133a:	d1 38       	cpi	r29, 0x81	; 129
+    133c:	68 f3       	brcs	.-38     	; 0x1318 <PSUpCharFile+0x8a>
+							
+						    USART_Transmit(returnedValue[count]);
+							 delay_ms(1);
+							
+					    }
+						strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[0]))); //Retrieving string from the memory
+    133e:	f7 01       	movw	r30, r14
+    1340:	65 91       	lpm	r22, Z+
+    1342:	74 91       	lpm	r23, Z
+    1344:	8d ec       	ldi	r24, 0xCD	; 205
+    1346:	91 e0       	ldi	r25, 0x01	; 1
+    1348:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+						LCD_Display(buffer);
+    134c:	8d ec       	ldi	r24, 0xCD	; 205
+    134e:	91 e0       	ldi	r25, 0x01	; 1
+    1350:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						delay_ms(100);
+    1354:	84 e6       	ldi	r24, 0x64	; 100
+    1356:	90 e0       	ldi	r25, 0x00	; 0
+    1358:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+						Clear_Display();
+    135c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    1360:	11 c0       	rjmp	.+34     	; 0x1384 <PSUpCharFile+0xf6>
+						
+					}
+					else{
+						strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[1]))); //Retrieving string from the memory
+    1362:	f6 01       	movw	r30, r12
+    1364:	65 91       	lpm	r22, Z+
+    1366:	74 91       	lpm	r23, Z
+    1368:	8d ec       	ldi	r24, 0xCD	; 205
+    136a:	91 e0       	ldi	r25, 0x01	; 1
+    136c:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+						LCD_Display(buffer);
+    1370:	8d ec       	ldi	r24, 0xCD	; 205
+    1372:	91 e0       	ldi	r25, 0x01	; 1
+    1374:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+						delay_ms(100);
+    1378:	84 e6       	ldi	r24, 0x64	; 100
+    137a:	90 e0       	ldi	r25, 0x00	; 0
+    137c:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+						Clear_Display();
+    1380:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+}
+void PSUpCharFile(){
+	
+	OpenPortToFP();
+	
+	for (count = 0; count<13; count++){
+    1384:	e0 91 c5 00 	lds	r30, 0x00C5
+    1388:	ef 5f       	subi	r30, 0xFF	; 255
+    138a:	e0 93 c5 00 	sts	0x00C5, r30
+    138e:	ed 30       	cpi	r30, 0x0D	; 13
+    1390:	08 f4       	brcc	.+2      	; 0x1394 <PSUpCharFile+0x106>
+    1392:	9d cf       	rjmp	.-198    	; 0x12ce <PSUpCharFile+0x40>
+					}
+			}
+	}
+	
+	
+}
+    1394:	df 91       	pop	r29
+    1396:	cf 91       	pop	r28
+    1398:	1f 91       	pop	r17
+    139a:	0f 91       	pop	r16
+    139c:	ff 90       	pop	r15
+    139e:	ef 90       	pop	r14
+    13a0:	df 90       	pop	r13
+    13a2:	cf 90       	pop	r12
+    13a4:	bf 90       	pop	r11
+    13a6:	08 95       	ret
+
+000013a8 <PSLoadChar>:
+			}
+
+		}
+	}
+}
+void PSLoadChar(int iPageID){
+    13a8:	cf 93       	push	r28
+    13aa:	c8 2f       	mov	r28, r24
+	
+	OpenPortToFP();
+    13ac:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	int sum = 15 + iPageID;
+	
+	USART_Transmit(0xEF);
+    13b0:	8f ee       	ldi	r24, 0xEF	; 239
+    13b2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    13b6:	81 e0       	ldi	r24, 0x01	; 1
+    13b8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    13bc:	8f ef       	ldi	r24, 0xFF	; 255
+    13be:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    13c2:	8f ef       	ldi	r24, 0xFF	; 255
+    13c4:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    13c8:	8f ef       	ldi	r24, 0xFF	; 255
+    13ca:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    13ce:	8f ef       	ldi	r24, 0xFF	; 255
+    13d0:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    13d4:	81 e0       	ldi	r24, 0x01	; 1
+    13d6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    13da:	80 e0       	ldi	r24, 0x00	; 0
+    13dc:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x06);
+    13e0:	86 e0       	ldi	r24, 0x06	; 6
+    13e2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x07);
+    13e6:	87 e0       	ldi	r24, 0x07	; 7
+    13e8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(BUFFER_ID01);
+    13ec:	81 e0       	ldi	r24, 0x01	; 1
+    13ee:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    13f2:	80 e0       	ldi	r24, 0x00	; 0
+    13f4:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(iPageID);
+    13f8:	8c 2f       	mov	r24, r28
+    13fa:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    13fe:	80 e0       	ldi	r24, 0x00	; 0
+    1400:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(sum);
+    1404:	8f e0       	ldi	r24, 0x0F	; 15
+    1406:	8c 0f       	add	r24, r28
+    1408:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+	
+	for(count=0; count<12; count++){
+    140c:	10 92 c5 00 	sts	0x00C5, r1
+    1410:	c0 e0       	ldi	r28, 0x00	; 0
+		returnedValue[count]=USART_Receive();
+    1412:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+    1416:	ec 2f       	mov	r30, r28
+    1418:	f0 e0       	ldi	r31, 0x00	; 0
+    141a:	e4 53       	subi	r30, 0x34	; 52
+    141c:	fe 4f       	sbci	r31, 0xFE	; 254
+    141e:	80 83       	st	Z, r24
+	USART_Transmit(iPageID);
+	USART_Transmit(0x00);
+	USART_Transmit(sum);
+	
+	
+	for(count=0; count<12; count++){
+    1420:	e0 91 c5 00 	lds	r30, 0x00C5
+    1424:	c1 e0       	ldi	r28, 0x01	; 1
+    1426:	ce 0f       	add	r28, r30
+    1428:	c0 93 c5 00 	sts	0x00C5, r28
+    142c:	cc 30       	cpi	r28, 0x0C	; 12
+    142e:	88 f3       	brcs	.-30     	; 0x1412 <PSLoadChar+0x6a>
+		returnedValue[count]=USART_Receive();
+	}
+
+   OpenPortToPC();
+    1430:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+
+	if(returnedValue[9]==0x00){
+    1434:	80 91 d5 01 	lds	r24, 0x01D5
+    1438:	81 11       	cpse	r24, r1
+    143a:	16 c0       	rjmp	.+44     	; 0x1468 <PSLoadChar+0xc0>
+		PORTC|=(1<<1);
+    143c:	a9 9a       	sbi	0x15, 1	; 21
+		
+		Clear_Display();
+    143e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[22]))); //Error when receiving package
+    1442:	e5 ee       	ldi	r30, 0xE5	; 229
+    1444:	f0 e0       	ldi	r31, 0x00	; 0
+    1446:	65 91       	lpm	r22, Z+
+    1448:	74 91       	lpm	r23, Z
+    144a:	8d ec       	ldi	r24, 0xCD	; 205
+    144c:	91 e0       	ldi	r25, 0x01	; 1
+    144e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1452:	8d ec       	ldi	r24, 0xCD	; 205
+    1454:	91 e0       	ldi	r25, 0x01	; 1
+    1456:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    145a:	84 e6       	ldi	r24, 0x64	; 100
+    145c:	90 e0       	ldi	r25, 0x00	; 0
+    145e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1462:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    1466:	2d c0       	rjmp	.+90     	; 0x14c2 <PSLoadChar+0x11a>
+		
+	}
+	else if(returnedValue[9]==0x01){
+    1468:	81 30       	cpi	r24, 0x01	; 1
+    146a:	a9 f4       	brne	.+42     	; 0x1496 <PSLoadChar+0xee>
+		Clear_Display();
+    146c:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+    1470:	e1 ec       	ldi	r30, 0xC1	; 193
+    1472:	f0 e0       	ldi	r31, 0x00	; 0
+    1474:	65 91       	lpm	r22, Z+
+    1476:	74 91       	lpm	r23, Z
+    1478:	8d ec       	ldi	r24, 0xCD	; 205
+    147a:	91 e0       	ldi	r25, 0x01	; 1
+    147c:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1480:	8d ec       	ldi	r24, 0xCD	; 205
+    1482:	91 e0       	ldi	r25, 0x01	; 1
+    1484:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    1488:	84 e6       	ldi	r24, 0x64	; 100
+    148a:	90 e0       	ldi	r25, 0x00	; 0
+    148c:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1490:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    1494:	16 c0       	rjmp	.+44     	; 0x14c2 <PSLoadChar+0x11a>
+		
+	}
+	else if(returnedValue[9]==0x0C){
+    1496:	8c 30       	cpi	r24, 0x0C	; 12
+    1498:	a1 f4       	brne	.+40     	; 0x14c2 <PSLoadChar+0x11a>
+		Clear_Display();
+    149a:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[23]))); //Error when receiving package
+    149e:	e7 ee       	ldi	r30, 0xE7	; 231
+    14a0:	f0 e0       	ldi	r31, 0x00	; 0
+    14a2:	65 91       	lpm	r22, Z+
+    14a4:	74 91       	lpm	r23, Z
+    14a6:	8d ec       	ldi	r24, 0xCD	; 205
+    14a8:	91 e0       	ldi	r25, 0x01	; 1
+    14aa:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    14ae:	8d ec       	ldi	r24, 0xCD	; 205
+    14b0:	91 e0       	ldi	r25, 0x01	; 1
+    14b2:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    14b6:	84 e6       	ldi	r24, 0x64	; 100
+    14b8:	90 e0       	ldi	r25, 0x00	; 0
+    14ba:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    14be:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		
+	}
+	
+	OpenPortToFP();
+    14c2:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+}
+    14c6:	cf 91       	pop	r28
+    14c8:	08 95       	ret
+
+000014ca <PSDownChar>:
+
+void PSDownChar(){
+    14ca:	cf 93       	push	r28
+	 OpenPortToFP();
+    14cc:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	
+	USART_Transmit(0xEF);
+    14d0:	8f ee       	ldi	r24, 0xEF	; 239
+    14d2:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    14d6:	81 e0       	ldi	r24, 0x01	; 1
+    14d8:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    14dc:	8f ef       	ldi	r24, 0xFF	; 255
+    14de:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    14e2:	8f ef       	ldi	r24, 0xFF	; 255
+    14e4:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    14e8:	8f ef       	ldi	r24, 0xFF	; 255
+    14ea:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0xFF);
+    14ee:	8f ef       	ldi	r24, 0xFF	; 255
+    14f0:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x01);
+    14f4:	81 e0       	ldi	r24, 0x01	; 1
+    14f6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    14fa:	80 e0       	ldi	r24, 0x00	; 0
+    14fc:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x04);
+    1500:	84 e0       	ldi	r24, 0x04	; 4
+    1502:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x09);
+    1506:	89 e0       	ldi	r24, 0x09	; 9
+    1508:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(BUFFER_ID01);
+    150c:	81 e0       	ldi	r24, 0x01	; 1
+    150e:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x00);
+    1512:	80 e0       	ldi	r24, 0x00	; 0
+    1514:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	USART_Transmit(0x0F);
+    1518:	8f e0       	ldi	r24, 0x0F	; 15
+    151a:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+	
+	for(count=0; count<12; count++){
+    151e:	10 92 c5 00 	sts	0x00C5, r1
+    1522:	c0 e0       	ldi	r28, 0x00	; 0
+		returnedValue[count]=USART_Receive();
+    1524:	0e 94 5c 0b 	call	0x16b8	; 0x16b8 <USART_Receive>
+    1528:	ec 2f       	mov	r30, r28
+    152a:	f0 e0       	ldi	r31, 0x00	; 0
+    152c:	e4 53       	subi	r30, 0x34	; 52
+    152e:	fe 4f       	sbci	r31, 0xFE	; 254
+    1530:	80 83       	st	Z, r24
+	USART_Transmit(BUFFER_ID01);
+	USART_Transmit(0x00);
+	USART_Transmit(0x0F);
+	
+	
+	for(count=0; count<12; count++){
+    1532:	e0 91 c5 00 	lds	r30, 0x00C5
+    1536:	c1 e0       	ldi	r28, 0x01	; 1
+    1538:	ce 0f       	add	r28, r30
+    153a:	c0 93 c5 00 	sts	0x00C5, r28
+    153e:	cc 30       	cpi	r28, 0x0C	; 12
+    1540:	88 f3       	brcs	.-30     	; 0x1524 <PSDownChar+0x5a>
+		returnedValue[count]=USART_Receive();
+	}
+
+	OpenPortToPC();
+    1542:	0e 94 31 03 	call	0x662	; 0x662 <OpenPortToPC>
+
+	if(returnedValue[9]==0x00){
+    1546:	80 91 d5 01 	lds	r24, 0x01D5
+    154a:	81 11       	cpse	r24, r1
+    154c:	16 c0       	rjmp	.+44     	; 0x157a <PSDownChar+0xb0>
+		PORTC|=(1<<1);
+    154e:	a9 9a       	sbi	0x15, 1	; 21
+		Clear_Display();
+    1550:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[22]))); //Error when receiving package
+    1554:	e5 ee       	ldi	r30, 0xE5	; 229
+    1556:	f0 e0       	ldi	r31, 0x00	; 0
+    1558:	65 91       	lpm	r22, Z+
+    155a:	74 91       	lpm	r23, Z
+    155c:	8d ec       	ldi	r24, 0xCD	; 205
+    155e:	91 e0       	ldi	r25, 0x01	; 1
+    1560:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1564:	8d ec       	ldi	r24, 0xCD	; 205
+    1566:	91 e0       	ldi	r25, 0x01	; 1
+    1568:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    156c:	84 e6       	ldi	r24, 0x64	; 100
+    156e:	90 e0       	ldi	r25, 0x00	; 0
+    1570:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    1574:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    1578:	2d c0       	rjmp	.+90     	; 0x15d4 <PSDownChar+0x10a>
+		
+	}
+	else if(returnedValue[9]==0x01){
+    157a:	81 30       	cpi	r24, 0x01	; 1
+    157c:	a9 f4       	brne	.+42     	; 0x15a8 <PSDownChar+0xde>
+		Clear_Display();
+    157e:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[4]))); //Error when receiving package
+    1582:	e1 ec       	ldi	r30, 0xC1	; 193
+    1584:	f0 e0       	ldi	r31, 0x00	; 0
+    1586:	65 91       	lpm	r22, Z+
+    1588:	74 91       	lpm	r23, Z
+    158a:	8d ec       	ldi	r24, 0xCD	; 205
+    158c:	91 e0       	ldi	r25, 0x01	; 1
+    158e:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    1592:	8d ec       	ldi	r24, 0xCD	; 205
+    1594:	91 e0       	ldi	r25, 0x01	; 1
+    1596:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    159a:	84 e6       	ldi	r24, 0x64	; 100
+    159c:	90 e0       	ldi	r25, 0x00	; 0
+    159e:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    15a2:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+    15a6:	16 c0       	rjmp	.+44     	; 0x15d4 <PSDownChar+0x10a>
+		
+	}
+	else if(returnedValue[9]==0x0E){
+    15a8:	8e 30       	cpi	r24, 0x0E	; 14
+    15aa:	a1 f4       	brne	.+40     	; 0x15d4 <PSDownChar+0x10a>
+		Clear_Display();
+    15ac:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		strcpy_P(buffer, (PGM_P)pgm_read_word(&(string_response_table[24]))); //Error when receiving package
+    15b0:	e9 ee       	ldi	r30, 0xE9	; 233
+    15b2:	f0 e0       	ldi	r31, 0x00	; 0
+    15b4:	65 91       	lpm	r22, Z+
+    15b6:	74 91       	lpm	r23, Z
+    15b8:	8d ec       	ldi	r24, 0xCD	; 205
+    15ba:	91 e0       	ldi	r25, 0x01	; 1
+    15bc:	0e 94 83 0b 	call	0x1706	; 0x1706 <strcpy_P>
+		LCD_Display(buffer);
+    15c0:	8d ec       	ldi	r24, 0xCD	; 205
+    15c2:	91 e0       	ldi	r25, 0x01	; 1
+    15c4:	0e 94 f5 02 	call	0x5ea	; 0x5ea <LCD_Display>
+		delay_ms(100);
+    15c8:	84 e6       	ldi	r24, 0x64	; 100
+    15ca:	90 e0       	ldi	r25, 0x00	; 0
+    15cc:	0e 94 c5 02 	call	0x58a	; 0x58a <delay_ms>
+		Clear_Display();
+    15d0:	0e 94 08 03 	call	0x610	; 0x610 <Clear_Display>
+		
+	}
+	OpenPortToFP();
+    15d4:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+}
+    15d8:	cf 91       	pop	r28
+    15da:	08 95       	ret
+
+000015dc <PSDownLoadData>:
+void PSDownLoadData(unsigned data){
+    15dc:	cf 93       	push	r28
+    15de:	c8 2f       	mov	r28, r24
+	OpenPortToFP();
+    15e0:	0e 94 3b 03 	call	0x676	; 0x676 <OpenPortToFP>
+	USART_Transmit(data);
+    15e4:	8c 2f       	mov	r24, r28
+    15e6:	0e 94 72 0b 	call	0x16e4	; 0x16e4 <USART_Transmit>
+	
+}
+    15ea:	cf 91       	pop	r28
+    15ec:	08 95       	ret
+
+000015ee <__vector_11>:
+ISR (UART0_RECEIVE_INTERRUPT)
+/*************************************************************************
+Function: UART Receive Complete interrupt
+Purpose:  called when the UART has received a character
+**************************************************************************/
+{
+    15ee:	1f 92       	push	r1
+    15f0:	0f 92       	push	r0
+    15f2:	0f b6       	in	r0, 0x3f	; 63
+    15f4:	0f 92       	push	r0
+    15f6:	11 24       	eor	r1, r1
+    15f8:	2f 93       	push	r18
+    15fa:	8f 93       	push	r24
+    15fc:	9f 93       	push	r25
+    15fe:	ef 93       	push	r30
+    1600:	ff 93       	push	r31
+	unsigned char usr;
+	unsigned char lastRxError;
+	
+	
+	/* read UART status register and UART data register */
+	usr  = UART0_STATUS;
+    1602:	8b b1       	in	r24, 0x0b	; 11
+	data = UART0_DATA;
+    1604:	2c b1       	in	r18, 0x0c	; 12
+	
+	/* */
+	#if defined(ATMEGA_USART)
+	lastRxError = (usr & ((1<<(FE))|(1<<(DOR)) ));
+    1606:	88 71       	andi	r24, 0x18	; 24
+	#endif
+	
+	/* calculate buffer index */
+	tmphead = ( UART_RxHead + 1) & UART_RX_BUFFER_MASK;
+    1608:	e0 91 c9 00 	lds	r30, 0x00C9
+    160c:	ef 5f       	subi	r30, 0xFF	; 255
+    160e:	ef 77       	andi	r30, 0x7F	; 127
+	
+	if ( tmphead == UART_RxTail ) {
+    1610:	90 91 c8 00 	lds	r25, 0x00C8
+    1614:	e9 17       	cp	r30, r25
+    1616:	39 f0       	breq	.+14     	; 0x1626 <__vector_11+0x38>
+		/* error: receive buffer overflow */
+		lastRxError = UART_BUFFER_OVERFLOW >> 8;
+		}else{
+		/* store new index */
+		UART_RxHead = tmphead;
+    1618:	e0 93 c9 00 	sts	0x00C9, r30
+		/* store received data in buffer */
+		UART_RxBuf[tmphead] = data;
+    161c:	f0 e0       	ldi	r31, 0x00	; 0
+    161e:	e4 53       	subi	r30, 0x34	; 52
+    1620:	ff 4f       	sbci	r31, 0xFF	; 255
+    1622:	20 83       	st	Z, r18
+    1624:	01 c0       	rjmp	.+2      	; 0x1628 <__vector_11+0x3a>
+	/* calculate buffer index */
+	tmphead = ( UART_RxHead + 1) & UART_RX_BUFFER_MASK;
+	
+	if ( tmphead == UART_RxTail ) {
+		/* error: receive buffer overflow */
+		lastRxError = UART_BUFFER_OVERFLOW >> 8;
+    1626:	82 e0       	ldi	r24, 0x02	; 2
+		/* store new index */
+		UART_RxHead = tmphead;
+		/* store received data in buffer */
+		UART_RxBuf[tmphead] = data;
+	}
+	UART_LastRxError |= lastRxError;
+    1628:	90 91 c7 00 	lds	r25, 0x00C7
+    162c:	89 2b       	or	r24, r25
+    162e:	80 93 c7 00 	sts	0x00C7, r24
+}
+    1632:	ff 91       	pop	r31
+    1634:	ef 91       	pop	r30
+    1636:	9f 91       	pop	r25
+    1638:	8f 91       	pop	r24
+    163a:	2f 91       	pop	r18
+    163c:	0f 90       	pop	r0
+    163e:	0f be       	out	0x3f, r0	; 63
+    1640:	0f 90       	pop	r0
+    1642:	1f 90       	pop	r1
+    1644:	18 95       	reti
+
+00001646 <__vector_12>:
+ISR(UART0_TRANSMIT_INTERRUPT)
+/*************************************************************************
+Function: UART Data Register Empty interrupt
+Purpose:  called when the UART is ready to transmit the next byte
+**************************************************************************/
+{
+    1646:	1f 92       	push	r1
+    1648:	0f 92       	push	r0
+    164a:	0f b6       	in	r0, 0x3f	; 63
+    164c:	0f 92       	push	r0
+    164e:	11 24       	eor	r1, r1
+    1650:	8f 93       	push	r24
+    1652:	9f 93       	push	r25
+    1654:	ef 93       	push	r30
+    1656:	ff 93       	push	r31
+    unsigned char tmptail;
+  
+      
+    if ( UART_TxHead != UART_TxTail) {
+    1658:	90 91 cb 00 	lds	r25, 0x00CB
+    165c:	80 91 ca 00 	lds	r24, 0x00CA
+    1660:	98 17       	cp	r25, r24
+    1662:	61 f0       	breq	.+24     	; 0x167c <__vector_12+0x36>
+        /* calculate and store new buffer index */
+        tmptail = (UART_TxTail + 1) & UART_TX_BUFFER_MASK;
+    1664:	e0 91 ca 00 	lds	r30, 0x00CA
+    1668:	ef 5f       	subi	r30, 0xFF	; 255
+    166a:	ef 77       	andi	r30, 0x7F	; 127
+        UART_TxTail = tmptail;
+    166c:	e0 93 ca 00 	sts	0x00CA, r30
+        /* get one byte from buffer and write it to UART */
+        UART0_DATA = UART_TxBuf[tmptail];  /* start transmission */
+    1670:	f0 e0       	ldi	r31, 0x00	; 0
+    1672:	e4 5b       	subi	r30, 0xB4	; 180
+    1674:	fe 4f       	sbci	r31, 0xFE	; 254
+    1676:	80 81       	ld	r24, Z
+    1678:	8c b9       	out	0x0c, r24	; 12
+    167a:	01 c0       	rjmp	.+2      	; 0x167e <__vector_12+0x38>
+    }else{
+        /* Tx buffer empty, disable UDRE interrupt */
+        UART0_CONTROL &= ~(1<<UART0_UDRIE);
+    167c:	55 98       	cbi	0x0a, 5	; 10
+    }
+}
+    167e:	ff 91       	pop	r31
+    1680:	ef 91       	pop	r30
+    1682:	9f 91       	pop	r25
+    1684:	8f 91       	pop	r24
+    1686:	0f 90       	pop	r0
+    1688:	0f be       	out	0x3f, r0	; 63
+    168a:	0f 90       	pop	r0
+    168c:	1f 90       	pop	r1
+    168e:	18 95       	reti
+
+00001690 <USART_Init>:
+Input:    baudrate using macro UART_BAUD_SELECT()
+Returns:  none
+**************************************************************************/
+void USART_Init(unsigned int baudrate)
+{
+    UART_TxHead = 0;
+    1690:	10 92 cb 00 	sts	0x00CB, r1
+    UART_TxTail = 0;
+    1694:	10 92 ca 00 	sts	0x00CA, r1
+    UART_RxHead = 0;
+    1698:	10 92 c9 00 	sts	0x00C9, r1
+    UART_RxTail = 0;
+    169c:	10 92 c8 00 	sts	0x00C8, r1
+	
+
+#if defined (ATMEGA_USART)
+    /* Set baud rate */
+	
+    if ( baudrate & 0x8000 )
+    16a0:	99 23       	and	r25, r25
+    16a2:	1c f4       	brge	.+6      	; 0x16aa <USART_Init+0x1a>
+    {
+	     UART0_STATUS = (1<<U2X);  //Enable 2x speed 
+    16a4:	22 e0       	ldi	r18, 0x02	; 2
+    16a6:	2b b9       	out	0x0b, r18	; 11
+         baudrate &= ~0x8000;
+    16a8:	9f 77       	andi	r25, 0x7F	; 127
+    }
+    UBRRH = (unsigned char)baudrate>>8;
+    16aa:	10 bc       	out	0x20, r1	; 32
+    UBRRL = (unsigned char)baudrate;
+    16ac:	89 b9       	out	0x09, r24	; 9
+     
+    /* Enable USART receiver and transmitter and receive complete interrupt */
+    UART0_CONTROL = (1<<RXCIE)|(1<<RXEN)|(1<<TXEN);
+    16ae:	88 e9       	ldi	r24, 0x98	; 152
+    16b0:	8a b9       	out	0x0a, r24	; 10
+	    
+    /* Set frame format: asynchronous, 8data, no parity, 1stop bit */
+    #ifdef URSEL
+    UCSRC =  (1<<URSEL)|(3<<UCSZ0); //(1<<URSEL)|(3<<UCSZ0); ///*This is (frame format)asynchronous, 8data, no parity, 1stop bit */
+    16b2:	86 e8       	ldi	r24, 0x86	; 134
+    16b4:	80 bd       	out	0x20, r24	; 32
+    16b6:	08 95       	ret
+
+000016b8 <USART_Receive>:
+{    
+    unsigned char tmptail;
+    unsigned char data;
+  
+  
+  while(UART_RxHead == UART_RxTail){;}  //Wait for data availability 
+    16b8:	90 91 c9 00 	lds	r25, 0x00C9
+    16bc:	80 91 c8 00 	lds	r24, 0x00C8
+    16c0:	98 17       	cp	r25, r24
+    16c2:	d1 f3       	breq	.-12     	; 0x16b8 <USART_Receive>
+  
+   /* calculate /store buffer index */
+    tmptail = (UART_RxTail + 1) & UART_RX_BUFFER_MASK;
+    16c4:	e0 91 c8 00 	lds	r30, 0x00C8
+    16c8:	ef 5f       	subi	r30, 0xFF	; 255
+    16ca:	ef 77       	andi	r30, 0x7F	; 127
+    UART_RxTail = tmptail; 
+    16cc:	e0 93 c8 00 	sts	0x00C8, r30
+      
+    /* get data from receive buffer */
+    data = UART_RxBuf[tmptail];
+    16d0:	f0 e0       	ldi	r31, 0x00	; 0
+    16d2:	e4 53       	subi	r30, 0x34	; 52
+    16d4:	ff 4f       	sbci	r31, 0xFF	; 255
+    16d6:	80 81       	ld	r24, Z
+	data = (UART_LastRxError << 8) + data;
+    16d8:	90 91 c7 00 	lds	r25, 0x00C7
+	
+	UART_LastRxError = 0;
+    16dc:	10 92 c7 00 	sts	0x00C7, r1
+      
+    return data;
+  
+}/* uart_getc */
+    16e0:	90 e0       	ldi	r25, 0x00	; 0
+    16e2:	08 95       	ret
+
+000016e4 <USART_Transmit>:
+void USART_Transmit(unsigned char data)
+{
+    unsigned char tmphead;
+  
+      
+    tmphead  = (UART_TxHead + 1) & UART_TX_BUFFER_MASK;
+    16e4:	20 91 cb 00 	lds	r18, 0x00CB
+    16e8:	2f 5f       	subi	r18, 0xFF	; 255
+    16ea:	2f 77       	andi	r18, 0x7F	; 127
+      
+    while ( tmphead == UART_TxTail ){
+    16ec:	90 91 ca 00 	lds	r25, 0x00CA
+    16f0:	29 17       	cp	r18, r25
+    16f2:	e1 f3       	breq	.-8      	; 0x16ec <USART_Transmit+0x8>
+        ;/* wait for free space in buffer */
+    }
+      
+    UART_TxBuf[tmphead] = data;
+    16f4:	e2 2f       	mov	r30, r18
+    16f6:	f0 e0       	ldi	r31, 0x00	; 0
+    16f8:	e4 5b       	subi	r30, 0xB4	; 180
+    16fa:	fe 4f       	sbci	r31, 0xFE	; 254
+    16fc:	80 83       	st	Z, r24
+    UART_TxHead = tmphead;
+    16fe:	20 93 cb 00 	sts	0x00CB, r18
+  
+    /* enable UDRE interrupt */
+    UART0_CONTROL    |= 1<<(UART0_UDRIE);
+    1702:	55 9a       	sbi	0x0a, 5	; 10
+    1704:	08 95       	ret
+
+00001706 <strcpy_P>:
+    1706:	fb 01       	movw	r30, r22
+    1708:	dc 01       	movw	r26, r24
+    170a:	05 90       	lpm	r0, Z+
+    170c:	0d 92       	st	X+, r0
+    170e:	00 20       	and	r0, r0
+    1710:	e1 f7       	brne	.-8      	; 0x170a <strcpy_P+0x4>
+    1712:	08 95       	ret
+
+00001714 <itoa>:
+    1714:	45 32       	cpi	r20, 0x25	; 37
+    1716:	51 05       	cpc	r21, r1
+    1718:	20 f4       	brcc	.+8      	; 0x1722 <itoa+0xe>
+    171a:	42 30       	cpi	r20, 0x02	; 2
+    171c:	10 f0       	brcs	.+4      	; 0x1722 <itoa+0xe>
+    171e:	0c 94 95 0b 	jmp	0x172a	; 0x172a <__itoa_ncheck>
+    1722:	fb 01       	movw	r30, r22
+    1724:	10 82       	st	Z, r1
+    1726:	cb 01       	movw	r24, r22
+    1728:	08 95       	ret
+
+0000172a <__itoa_ncheck>:
+    172a:	bb 27       	eor	r27, r27
+    172c:	4a 30       	cpi	r20, 0x0A	; 10
+    172e:	31 f4       	brne	.+12     	; 0x173c <__itoa_ncheck+0x12>
+    1730:	99 23       	and	r25, r25
+    1732:	22 f4       	brpl	.+8      	; 0x173c <__itoa_ncheck+0x12>
+    1734:	bd e2       	ldi	r27, 0x2D	; 45
+    1736:	90 95       	com	r25
+    1738:	81 95       	neg	r24
+    173a:	9f 4f       	sbci	r25, 0xFF	; 255
+    173c:	0c 94 a1 0b 	jmp	0x1742	; 0x1742 <__utoa_common>
+
+00001740 <__utoa_ncheck>:
+    1740:	bb 27       	eor	r27, r27
+
+00001742 <__utoa_common>:
+    1742:	fb 01       	movw	r30, r22
+    1744:	55 27       	eor	r21, r21
+    1746:	aa 27       	eor	r26, r26
+    1748:	88 0f       	add	r24, r24
+    174a:	99 1f       	adc	r25, r25
+    174c:	aa 1f       	adc	r26, r26
+    174e:	a4 17       	cp	r26, r20
+    1750:	10 f0       	brcs	.+4      	; 0x1756 <__utoa_common+0x14>
+    1752:	a4 1b       	sub	r26, r20
+    1754:	83 95       	inc	r24
+    1756:	50 51       	subi	r21, 0x10	; 16
+    1758:	b9 f7       	brne	.-18     	; 0x1748 <__utoa_common+0x6>
+    175a:	a0 5d       	subi	r26, 0xD0	; 208
+    175c:	aa 33       	cpi	r26, 0x3A	; 58
+    175e:	08 f0       	brcs	.+2      	; 0x1762 <__utoa_common+0x20>
+    1760:	a9 5d       	subi	r26, 0xD9	; 217
+    1762:	a1 93       	st	Z+, r26
+    1764:	00 97       	sbiw	r24, 0x00	; 0
+    1766:	79 f7       	brne	.-34     	; 0x1746 <__utoa_common+0x4>
+    1768:	b1 11       	cpse	r27, r1
+    176a:	b1 93       	st	Z+, r27
+    176c:	11 92       	st	Z+, r1
+    176e:	cb 01       	movw	r24, r22
+    1770:	0c 94 ba 0b 	jmp	0x1774	; 0x1774 <strrev>
+
+00001774 <strrev>:
+    1774:	dc 01       	movw	r26, r24
+    1776:	fc 01       	movw	r30, r24
+    1778:	67 2f       	mov	r22, r23
+    177a:	71 91       	ld	r23, Z+
+    177c:	77 23       	and	r23, r23
+    177e:	e1 f7       	brne	.-8      	; 0x1778 <strrev+0x4>
+    1780:	32 97       	sbiw	r30, 0x02	; 2
+    1782:	04 c0       	rjmp	.+8      	; 0x178c <strrev+0x18>
+    1784:	7c 91       	ld	r23, X
+    1786:	6d 93       	st	X+, r22
+    1788:	70 83       	st	Z, r23
+    178a:	62 91       	ld	r22, -Z
+    178c:	ae 17       	cp	r26, r30
+    178e:	bf 07       	cpc	r27, r31
+    1790:	c8 f3       	brcs	.-14     	; 0x1784 <strrev+0x10>
+    1792:	08 95       	ret
+
+00001794 <_exit>:
+    1794:	f8 94       	cli
+
+00001796 <__stop_program>:
+    1796:	ff cf       	rjmp	.-2      	; 0x1796 <__stop_program>

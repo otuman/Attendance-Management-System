@@ -1,0 +1,3 @@
+LCD Display 80000000 problem
+
+http://embdev.net/topic/353004
